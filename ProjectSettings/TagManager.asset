@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 172214719
+    locked: 0
+  - name: Slime
+    uniqueID: 599123611
+    locked: 0
+  - name: UI
+    uniqueID: 1486678805
+    locked: 0

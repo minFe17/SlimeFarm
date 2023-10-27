@@ -8,15 +8,12 @@ public class BorderManager : MonoBehaviour
     public Vector2 TopRightPos { get; set; }
     public Vector2 BottomLeftPos { get; set; }
 
-    public void Init()
+    public void CreateBoard(Transform parent)
     {
-        _borderPrefab = Resources.Load("Prefabs/Border") as GameObject;
-        CreateBoard();
-    }
+        if (_borderPrefab == null)
+            _borderPrefab = Resources.Load("Prefabs/Border") as GameObject;
 
-    public void CreateBoard()
-    {
-        GameObject temp = Instantiate(_borderPrefab);
+        GameObject temp = Instantiate(_borderPrefab, parent);
         temp.GetComponent<Border>().Init();
     }
 }

@@ -4,7 +4,6 @@ public class WalkState : SlimeState
 {
     float _speedX;
     float _speedY;
-    float _turnSpeed = 0.3f;
     float _time;
     float _walkTime = 2.5f;
 
@@ -17,7 +16,7 @@ public class WalkState : SlimeState
 
     public override void MainLoop()
     {
-        Walk();
+        Move();
     }
 
     public override void OnExit()
@@ -35,21 +34,21 @@ public class WalkState : SlimeState
             _slime.SpriteRenderer.flipX = false;
     }
 
+    void Move()
+    {
+        if (_slime.CheckBoard())
+            _slime.ChangeState(new TurnState());
+        else
+            Walk();
+
+        CheckWalkTime();
+    }
+
     void Walk()
     {
         float newX = _speedX * Time.deltaTime;
         float newY = _speedY * Time.deltaTime;
-
         _slime.transform.Translate(newX, newY, newY);
-        if (_slime.CheckBoard())
-            Turn();
-        CheckWalkTime();
-    }
-
-    void Turn()
-    {
-        Vector3 targetPos = (_slime.transform.position - _slime.Reposition()).normalized;
-        _slime.transform.Translate(targetPos * _turnSpeed * Time.deltaTime);
     }
 
     void CheckWalkTime()

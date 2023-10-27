@@ -3,20 +3,24 @@ using UnityEngine;
 
 public class RepositionManager : MonoBehaviour
 {
+    // ╫л╠шео
     List<Vector3> _repositions = new List<Vector3>();
     GameObject _repositionPrefab;
 
     public List<Vector3> Repositions { get => _repositions; }
 
-    public void Init()
+    public void Init(Transform parent)
     {
         _repositions.Clear();
-        _repositionPrefab = Resources.Load("Prefabs/Reposition") as GameObject;
-        CreateReposition();
+        
+        CreateReposition(parent);
     }
 
-    void CreateReposition()
+    void CreateReposition(Transform parent)
     {
-        Instantiate(_repositionPrefab);
+        if (_repositionPrefab == null)
+            _repositionPrefab = Resources.Load("Prefabs/Reposition") as GameObject;
+
+        Instantiate(_repositionPrefab, parent);
     }
 }
