@@ -27,4 +27,11 @@ public class GameManager : MonoBehaviour
         if(_jam >= _maxJam)
             _jam = _maxJam;
     }
+
+    public void AddGold(int goldAmount)
+    {
+        _gold += goldAmount;
+        if (_gold >= _maxGold)
+            _gold = _maxGold;
+    }
 }

@@ -10,6 +10,7 @@ public class TurnState : SlimeState
     public override void OnEnter(Slime slime)
     {
         base.OnEnter(slime);
+        _state = EStateType.Turn;
         _slime.Animator.SetBool("isWalk", true);
         _reposition = _slime.Reposition();
     }

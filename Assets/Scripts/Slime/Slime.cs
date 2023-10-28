@@ -4,14 +4,19 @@ using Utils;
 
 public class Slime : MonoBehaviour
 {
-    [Header("Slime Type")]
+    [Header("Type")]
     [SerializeField] ESlimeType _slimeType;
+
+    [Header("Price")]
+    [SerializeField] int _price;
 
     SlimeState _state;
     Animator _animator;
     SpriteRenderer _spriteRenderer;
 
     SlimeManager _slimeManager;
+    UIManager _uiManaeger;
+    GameManager _gameManager;
     BorderManager _borderManager;
     RepositionManager _repositionManager;
 
@@ -19,11 +24,13 @@ public class Slime : MonoBehaviour
     int _maxLevel = 3;
     float _exp;
     float _needExp;
+    float _pickTime;
 
     public ESlimeType SlimeType { get => _slimeType; }
-    public int Level { get => _level; }
     public Animator Animator { get => _animator; }
     public SpriteRenderer SpriteRenderer { get => _spriteRenderer; }
+    public int Level { get => _level; }
+    public float PickTime { set => _pickTime = value; }
 
     void Awake()
     {
@@ -34,21 +41,39 @@ public class Slime : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _slimeManager = GenericSingleton<SlimeManager>.Instance;
+        _uiManaeger = GenericSingleton<UIManager>.Instance;
+        _gameManager = GenericSingleton<GameManager>.Instance;
         _borderManager = GenericSingleton<BorderManager>.Instance;
         _repositionManager = GenericSingleton<RepositionManager>.Instance;
-        _slimeManager = GenericSingleton<SlimeManager>.Instance;
         CheckLevel();
     }
 
     void Update()
     {
         StateMainLoop();
-        EXPTime();
+        EXPTimer();
     }
 
     void OnMouseDown()
     {
         ChangeState(new TouchState());
+    }
+
+    void OnMouseUp()
+    {
+        if (_state.State == EStateType.Pick)
+        {
+            if (_uiManaeger.SellUI.IsSell)
+                Sell();
+            else
+                ChangeState(new IdleState());
+        }
+    }
+
+    void OnMouseDrag()
+    {
+        PickTimer();
     }
 
     void StateMainLoop()
@@ -62,17 +87,17 @@ public class Slime : MonoBehaviour
         // csv파일 읽기 (슬라임 레벨)
         // 파일이 없으면 레벨 1
         _level = 1;
-        _needExp = _level * 100; 
+        _needExp = _level * 100;
         ChangeLevelAnimator();
     }
 
-    void EXPTime()
+    void EXPTimer()
     {
         if (_level == _maxLevel)
             return;
 
         _exp += Time.deltaTime;
-        if(_exp >= _needExp)
+        if (_exp >= _needExp)
             LevelUp();
     }
 
@@ -86,6 +111,20 @@ public class Slime : MonoBehaviour
     void ChangeLevelAnimator()
     {
         _animator.runtimeAnimatorController = _slimeManager.LevelAnimatorControllers[_level - 1];
+    }
+
+    void PickTimer()
+    {
+        _pickTime += Time.deltaTime;
+        if (_pickTime >= 0.5f)
+            ChangeState(new PickState());
+    }
+
+    void Sell()
+    {
+        _gameManager.AddGold(_level * _price);
+        //슬라임 리스트에서 제거
+        Destroy(this.gameObject);
     }
 
     public void ChangeState(SlimeState state)
@@ -127,4 +166,14 @@ public class Slime : MonoBehaviour
         if (_exp >= _needExp)
             LevelUp();
     }
+}
+
+public enum EStateType
+{
+    Idle,
+    Walk,
+    Turn,
+    Touch,
+    Pick,
+    Max,
 }

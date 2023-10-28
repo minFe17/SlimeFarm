@@ -7,6 +7,7 @@ public class IdleState : SlimeState
     public override void OnEnter(Slime slime)
     {
         base.OnEnter(slime);
+        _state = EStateType.Idle;
         _IdleStateTime = Random.Range(3, 5);
     }
 

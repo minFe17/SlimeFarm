@@ -3,8 +3,11 @@ using Utils;
 
 public class UI : MonoBehaviour
 {
-    [Header("CapitalUI")]
+    [Header("Capital UI")]
     [SerializeField] CapitalUI _capitalUI;
+
+    [Header("Sell UI")]
+    [SerializeField] SellUI _sellUI;
 
     public void Init(Camera mainCamera)
     {
@@ -12,5 +15,6 @@ public class UI : MonoBehaviour
         UIManager uiManager = GenericSingleton<UIManager>.Instance;
         uiManager.UI = this;
         uiManager.CapitalUI = _capitalUI;
+        uiManager.SellUI = _sellUI;
     }
 }

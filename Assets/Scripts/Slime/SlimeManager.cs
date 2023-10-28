@@ -7,10 +7,9 @@ public class SlimeManager : MonoBehaviour
 
     public RuntimeAnimatorController[] LevelAnimatorControllers { get => _levelAnimatorControllers; }
 
-    public void Init()
+    public void Init( )
     {
         SetAnimatorController();
-
     }
 
     void SetAnimatorController()

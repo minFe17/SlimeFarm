@@ -9,6 +9,7 @@ public class WalkState : SlimeState
     public override void OnEnter(Slime slime)
     {
         base.OnEnter(slime);
+        _state = EStateType.Walk;
         _slime.Animator.SetBool("isWalk", true);
         SetWalkSpeed();
     }

@@ -329,6 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slimeType: 1
+  _price: 100
 --- !u!58 &1207044513
 CircleCollider2D:
   m_ObjectHideFlags: 0

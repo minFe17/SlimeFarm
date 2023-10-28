@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
     GameObject _uiPrefab;
     public UI UI { get; set; }
     public CapitalUI CapitalUI { get; set; }
+    public SellUI SellUI { get; set; }
 
     public void CreateUI(Camera mainCamera)
     {
