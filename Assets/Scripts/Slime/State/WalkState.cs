@@ -4,8 +4,7 @@ public class WalkState : SlimeState
 {
     float _speedX;
     float _speedY;
-    float _time;
-    float _walkTime = 2.5f;
+    float _walkStateTime = 2.5f;
 
     public override void OnEnter(Slime slime)
     {
@@ -41,7 +40,7 @@ public class WalkState : SlimeState
         else
             Walk();
 
-        CheckWalkTime();
+        CheckTime();
     }
 
     void Walk()
@@ -51,10 +50,10 @@ public class WalkState : SlimeState
         _slime.transform.Translate(newX, newY, newY);
     }
 
-    void CheckWalkTime()
+    protected override void CheckTime()
     {
         _time += Time.deltaTime;
-        if (_time >= _walkTime)
+        if (_time >= _walkStateTime)
             _slime.ChangeState(new IdleState());
     }
 }

@@ -5,8 +5,7 @@ public class TurnState : SlimeState
     Vector3 _reposition;
 
     float _turnSpeed = 0.3f;
-    float _time;
-    float _turnTime = 3f;
+    float _turnStateTime = 3f;
 
     public override void OnEnter(Slime slime)
     {
@@ -37,13 +36,13 @@ public class TurnState : SlimeState
         else
             _slime.SpriteRenderer.flipX = false;
 
-        CheckWalkTime();
+        CheckTime();
     }
 
-    void CheckWalkTime()
+    protected override void CheckTime()
     {
         _time += Time.deltaTime;
-        if (_time >= _turnTime)
+        if (_time >= _turnStateTime)
             _slime.ChangeState(new IdleState());
     }
 }

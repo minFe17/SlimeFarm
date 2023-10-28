@@ -6,13 +6,13 @@ public class GameGroundwork: MonoBehaviour
     void Start()
     {
         Init();
-        Debug.Log(1);
     }
 
     void Init()
     {
         Groundwork();
         GenericSingleton<GameManager>.Instance.Init();
+        GenericSingleton<SlimeManager>.Instance.Init();
     }
 
     void Groundwork()

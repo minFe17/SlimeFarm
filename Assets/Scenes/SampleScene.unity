@@ -217,8 +217,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1207044511}
   - component: {fileID: 1207044510}
-  - component: {fileID: 1207044509}
   - component: {fileID: 1207044512}
+  - component: {fileID: 1207044509}
+  - component: {fileID: 1207044513}
   m_Layer: 0
   m_Name: Jelly 0
   m_TagString: Untagged
@@ -236,7 +237,7 @@ Animator:
   m_GameObject: {fileID: 1207044508}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0d3842a994495234589cb6d54c1215e2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 130def41d09961c448ded9e11bf7061c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -327,6 +328,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431e021d40a1a3640aeb6e0bd6825016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _slimeType: 1
+--- !u!58 &1207044513
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207044508}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1477362570
 GameObject:
   m_ObjectHideFlags: 0

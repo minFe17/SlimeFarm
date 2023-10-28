@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class IdleState : SlimeState
 {
-    float _time;
-    float _maxTime;
+    float _IdleStateTime;
 
     public override void OnEnter(Slime slime)
     {
         base.OnEnter(slime);
-        _maxTime = Random.Range(3, 5);
+        _IdleStateTime = Random.Range(3, 5);
     }
 
     public override void MainLoop()
@@ -16,10 +15,10 @@ public class IdleState : SlimeState
         CheckTime();
     }
 
-    void CheckTime()
+    protected override void CheckTime()
     {
         _time += Time.deltaTime;
-        if (_time >= _maxTime)
+        if (_time >= _IdleStateTime)
             _slime.ChangeState(new WalkState());
     }
 }
