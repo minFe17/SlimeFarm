@@ -12,7 +12,6 @@ public class RepositionManager : MonoBehaviour
     public void Init(Transform parent)
     {
         _repositions.Clear();
-        
         CreateReposition(parent);
     }
 

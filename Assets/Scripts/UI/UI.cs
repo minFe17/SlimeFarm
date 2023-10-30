@@ -9,6 +9,13 @@ public class UI : MonoBehaviour
     [Header("Sell UI")]
     [SerializeField] SellUI _sellUI;
 
+    [Header("Option UI")]
+    [SerializeField] GameObject _optionUI;
+
+    bool _isOpenUI;
+
+    public bool IsOpenUI { get => _isOpenUI; set => _isOpenUI = value; }
+
     public void Init(Camera mainCamera)
     {
         GetComponent<Canvas>().worldCamera = mainCamera;
@@ -16,5 +23,17 @@ public class UI : MonoBehaviour
         uiManager.UI = this;
         uiManager.CapitalUI = _capitalUI;
         uiManager.SellUI = _sellUI;
+    }
+
+    public void ShowOption()
+    {
+        _optionUI.SetActive(true);
+        _isOpenUI = true;
+    }
+
+    public void HideOption()
+    {
+        _optionUI.SetActive(false);
+        _isOpenUI = false;
     }
 }

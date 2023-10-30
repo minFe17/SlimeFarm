@@ -57,7 +57,8 @@ public class Slime : MonoBehaviour
 
     void OnMouseDown()
     {
-        ChangeState(new TouchState());
+        if (!_uiManaeger.UI.IsOpenUI)
+            ChangeState(new TouchState());
     }
 
     void OnMouseUp()
@@ -73,7 +74,8 @@ public class Slime : MonoBehaviour
 
     void OnMouseDrag()
     {
-        PickTimer();
+        if (!_uiManaeger.UI.IsOpenUI)
+            PickTimer();
     }
 
     void StateMainLoop()
