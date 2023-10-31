@@ -58,6 +58,17 @@ public class SlimeManager : MonoBehaviour
         // 파일 쓰기 
     }
 
+    public bool CalculteMaxSlime()
+    {
+        PlantManager plantManager = GenericSingleton<PlantManager>.Instance;
+        int maxSlimeLevel = plantManager.MaxSlimeLevel;
+        int maxSlime = plantManager.MaxSlimeDatas[maxSlimeLevel].MaxSlime;
+        if (_slimes.Count < maxSlime)
+            return false;
+        else
+            return true;
+    }
+
     public void CreateSlime(int index)
     {
         Vector3 position = GenericSingleton<RepositionManager>.Instance.Reposition();

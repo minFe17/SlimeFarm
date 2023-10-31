@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Utils;
 
-public class BuySlimePanel : MonoBehaviour
+public class BuySlimeUI : MonoBehaviour
 {
     [Header("Page")]
     [SerializeField] Text _pageText;
@@ -88,11 +88,12 @@ public class BuySlimePanel : MonoBehaviour
     public void BuySlime()
     {
         SlimeData slimeData = _slimeManager.SlimeDatas[_page];
-        bool isBuy = _gameManager.UseGold(slimeData.Gold);
-        if (isBuy)
+        bool isMaxSlime = _slimeManager.CalculteMaxSlime();
+        if (!isMaxSlime)
         {
-            _slimeManager.CreateSlime(_page);
-            Change();
+            bool isBuy = _gameManager.UseGold(slimeData.Gold);
+            if (isBuy)
+                _slimeManager.CreateSlime(_page);
         }
     }
 }

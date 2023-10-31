@@ -160,7 +160,11 @@ public class Slime : MonoBehaviour
 
     public void MakeJam()
     {
-        int makeJam = ((int)_slimeType + 1) * _level;
+        PlantManager plantManager = GenericSingleton<PlantManager>.Instance;
+        int jamOutputLevel = plantManager.JamOutputLevel;
+        int jamOutput = plantManager.JamOutputDatas[jamOutputLevel].JamOutput;
+
+        int makeJam = ((int)_slimeType + 1) * _level * jamOutput;
         GenericSingleton<GameManager>.Instance.AddJam(makeJam);
     }
 }
