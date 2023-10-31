@@ -11,6 +11,7 @@ public class TouchState : SlimeState
         _state = EStateType.Touch;
         _slime.Animator.SetTrigger("doTouch");
         _slime.MakeJam();
+        PlayTouchSound();
         _slime.AddExp();
         _touchStateTime = Random.Range(2f, 4f);
     }
@@ -25,5 +26,11 @@ public class TouchState : SlimeState
         _time += Time.deltaTime;
         if (_time >= _touchStateTime)
             _slime.ChangeState(new WalkState());
+    }
+
+    void PlayTouchSound()
+    {
+        AudioClipManager audioClipManager = GenericSingleton<AudioClipManager>.Instance;
+        audioClipManager.PlaySFXSound(ESFXSoundType.Touch);
     }
 }

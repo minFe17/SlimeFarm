@@ -15,6 +15,7 @@ public class Slime : MonoBehaviour
     UIManager _uiManaeger;
     GameManager _gameManager;
     BorderManager _borderManager;
+    AudioClipManager _audioClipManager;
    
     int _level;
     int _maxLevel = 3;
@@ -35,12 +36,7 @@ public class Slime : MonoBehaviour
 
     void Start()
     {
-        _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _slimeManager = GenericSingleton<SlimeManager>.Instance;
-        _uiManaeger = GenericSingleton<UIManager>.Instance;
-        _gameManager = GenericSingleton<GameManager>.Instance;
-        _borderManager = GenericSingleton<BorderManager>.Instance;
+        Init();
         CheckLevel();
     }
 
@@ -48,6 +44,17 @@ public class Slime : MonoBehaviour
     {
         StateMainLoop();
         EXPTimer();
+    }
+
+    void Init()
+    {
+        _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _slimeManager = GenericSingleton<SlimeManager>.Instance;
+        _uiManaeger = GenericSingleton<UIManager>.Instance;
+        _gameManager = GenericSingleton<GameManager>.Instance;
+        _borderManager = GenericSingleton<BorderManager>.Instance;
+        _audioClipManager = GenericSingleton<AudioClipManager>.Instance;
     }
 
     void OnMouseDown()
@@ -103,6 +110,7 @@ public class Slime : MonoBehaviour
         _level++;
         _needExp = _level * 100;
         ChangeLevelAnimator();
+        _audioClipManager.PlaySFXSound(ESFXSoundType.Grow);
     }
 
     void ChangeLevelAnimator()

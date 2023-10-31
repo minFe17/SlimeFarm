@@ -25,17 +25,24 @@ public class PlantManager : MonoBehaviour
         SetPlantData();
     }
 
+    void SetPlantData()
+    {
+        _csvManager.ReadPlantLevelData();
+    }
+
+    void PlayLevelSound()
+    {
+        AudioClipManager audioClipManager = GenericSingleton<AudioClipManager>.Instance;
+        audioClipManager.PlaySFXSound(ESFXSoundType.Unlock);
+    }
+
     public void LevelUp(EPlantType plantType)
     {
         if (plantType == EPlantType.MaxSlime)
             _maxSlimeLevel++;
         if (plantType == EPlantType.JamOutPut)
             _jamOutputLevel++;
-    }
-
-    void SetPlantData()
-    {
-        _csvManager.ReadPlantLevelData();
+        PlayLevelSound();
     }
 }
 

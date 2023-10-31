@@ -12,6 +12,8 @@ public class SlimeManager : MonoBehaviour
 
     RuntimeAnimatorController[] _levelAnimatorControllers;
 
+    AudioClipManager _audioClipManager;
+
     public List<Slime> Slimes { get => _slimes; }
     public List<SlimeData> SlimeDatas { get => _slimeDatas; }
     public List<bool> SlimeUnlocks { get => _slimeUnlocks; }
@@ -23,6 +25,7 @@ public class SlimeManager : MonoBehaviour
     public void Init()
     {
         _csvManager = GenericSingleton<CSVManager>.Instance;
+        _audioClipManager = GenericSingleton<AudioClipManager>.Instance;
         SetSlime(); //팩토리 디자인패턴 사용?
         SetSlimeData();
         SetAnimatorController();
@@ -55,6 +58,7 @@ public class SlimeManager : MonoBehaviour
     public void UnlockSlime(int index)
     {
         _slimeUnlocks[index] = true;
+        _audioClipManager.PlaySFXSound(ESFXSoundType.Unlock);
         // 파일 쓰기 
     }
 
@@ -75,12 +79,14 @@ public class SlimeManager : MonoBehaviour
         GameObject temp = Instantiate(_slimePrefabs[index], position, Quaternion.identity);
         Slime slime = temp.GetComponent<Slime>();
         _slimes.Add(slime);
+        _audioClipManager.PlaySFXSound(ESFXSoundType.Buy);
         // csv파일 쓰기
     }
 
     public void SellSlime(Slime slime)
     {
         _slimes.Remove(slime);
+        _audioClipManager.PlaySFXSound(ESFXSoundType.Sell);
         // csv파일 쓰기
     }
 }

@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     // 싱글턴
     SlimeManager _slimeManager;
     UIManager _uiManager;
+    AudioClipManager _audioClipManager;
+
     int _jam;
     int _gold;
     int _maxJam;
@@ -22,14 +24,14 @@ public class GameManager : MonoBehaviour
     {
         // csv 파일 읽고 jam, gold 값 있으면 불러오기
         // 없으면 초기값
+        _uiManager = GenericSingleton<UIManager>.Instance;
+        _slimeManager = GenericSingleton<SlimeManager>.Instance;
+        _audioClipManager = GenericSingleton<AudioClipManager>.Instance;
+
         _jam = 100;
         _gold = 200;
         _maxJam = 999999999;
         _maxGold = 999999999;
-        if (_uiManager == null)
-            _uiManager = GenericSingleton<UIManager>.Instance;
-        if (_slimeManager == null)
-            _slimeManager = GenericSingleton<SlimeManager>.Instance;
         StartCoroutine(AutoRoutine());
     }
 
@@ -52,13 +54,7 @@ public class GameManager : MonoBehaviour
         _uiManager.UI.ShowOption();
         _isStopGame = true;
         Time.timeScale = 0f;
-    }
-
-    void ResumeGame()
-    {
-        _uiManager.UI.HideOption();
-        _isStopGame = false;
-        Time.timeScale = 1f;
+        _audioClipManager.PlaySFXSound(ESFXSoundType.GameStop);
     }
 
     void AutoCreateJam()
@@ -71,6 +67,19 @@ public class GameManager : MonoBehaviour
     void AutoSave()
     {
         //파일쓰기
+    }
+
+    void Exit()
+    {
+        Application.Quit();
+    }
+
+    public void ResumeGame()
+    {
+        _uiManager.UI.HideOption();
+        _isStopGame = false;
+        Time.timeScale = 1f;
+        _audioClipManager.PlaySFXSound(ESFXSoundType.GameResume);
     }
 
     public void AddJam(int jamAmount)
@@ -107,6 +116,14 @@ public class GameManager : MonoBehaviour
             _gold -= gold;
             return true;
         }
+    }
+
+    public void ExitGame()
+    {
+        Time.timeScale = 1f;
+        GenericSingleton<AudioClipManager>.Instance.PlaySFXSound(ESFXSoundType.GameResume);
+        // csv파일 저장
+        Invoke("Exit", 0.5f);
     }
 
     IEnumerator AutoRoutine()

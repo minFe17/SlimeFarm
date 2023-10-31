@@ -14,6 +14,7 @@ public class GameGroundwork: MonoBehaviour
         GenericSingleton<GameManager>.Instance.Init();
         GenericSingleton<SlimeManager>.Instance.Init();
         GenericSingleton<PlantManager>.Instance.Init();
+        SetSound();
     }
 
     void Groundwork()
@@ -37,5 +38,13 @@ public class GameGroundwork: MonoBehaviour
         Camera mainCamera = temp.GetComponent<Camera>();
 
         GenericSingleton<UIManager>.Instance.CreateUI(mainCamera);
+    }
+
+    void SetSound()
+    {
+        GenericSingleton<SoundManager>.Instance.Init();
+        AudioClipManager audioClipManager = GenericSingleton<AudioClipManager>.Instance;
+        audioClipManager.Init();
+        audioClipManager.PlayBGM();
     }
 }

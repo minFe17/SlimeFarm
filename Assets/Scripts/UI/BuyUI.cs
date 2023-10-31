@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Utils;
 
 public class BuyUI : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class BuyUI : MonoBehaviour
     [Header("UI Panel Animator")]
     [SerializeField] Animator _animator;
 
+    AudioClipManager _audioClipManager;
+
     Image _image;
     Sprite _onSprite;
     Sprite _offSprite;
@@ -24,6 +27,7 @@ public class BuyUI : MonoBehaviour
     {
         SetSprite();
         _image = GetComponent<Image>();
+        _audioClipManager = GenericSingleton<AudioClipManager>.Instance;
     }
 
     void LateUpdate()
@@ -48,6 +52,7 @@ public class BuyUI : MonoBehaviour
         _animator.SetTrigger("doShow");
         _isClick = true;
         _ui.IsOpenUI = true;
+        _audioClipManager.PlaySFXSound(ESFXSoundType.Button);
     }
 
     void SetSprite()
@@ -63,6 +68,7 @@ public class BuyUI : MonoBehaviour
         _animator.SetTrigger("doHide");
         _isClick = false;
         _ui.IsOpenUI = false;
+        _audioClipManager.PlaySFXSound(ESFXSoundType.Button);
     }
 }
 
