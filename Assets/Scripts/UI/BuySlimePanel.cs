@@ -84,4 +84,15 @@ public class BuySlimePanel : MonoBehaviour
             Change();
         }
     }
+
+    public void BuySlime()
+    {
+        SlimeData slimeData = _slimeManager.SlimeDatas[_page];
+        bool isBuy = _gameManager.UseGold(slimeData.Gold);
+        if (isBuy)
+        {
+            _slimeManager.CreateSlime(_page);
+            Change();
+        }
+    }
 }

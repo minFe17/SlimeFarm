@@ -1,4 +1,5 @@
 using UnityEngine;
+using Utils;
 
 public class PickState : SlimeState
 {
@@ -16,7 +17,10 @@ public class PickState : SlimeState
     public override void OnExit()
     {
         if (_slime.CheckBoard())
-            _slime.transform.position = _slime.Reposition();
+        {
+            RepositionManager repositionManager = GenericSingleton<RepositionManager>.Instance;
+            _slime.transform.position = repositionManager.Reposition();
+        }
     }
 
     void PickPoint()

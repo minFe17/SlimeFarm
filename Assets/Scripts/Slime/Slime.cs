@@ -7,9 +7,6 @@ public class Slime : MonoBehaviour
     [Header("Type")]
     [SerializeField] ESlimeType _slimeType;
 
-    [Header("Price")]
-    [SerializeField] int _price;
-
     SlimeState _state;
     Animator _animator;
     SpriteRenderer _spriteRenderer;
@@ -18,8 +15,7 @@ public class Slime : MonoBehaviour
     UIManager _uiManaeger;
     GameManager _gameManager;
     BorderManager _borderManager;
-    RepositionManager _repositionManager;
-
+   
     int _level;
     int _maxLevel = 3;
     float _exp;
@@ -45,7 +41,6 @@ public class Slime : MonoBehaviour
         _uiManaeger = GenericSingleton<UIManager>.Instance;
         _gameManager = GenericSingleton<GameManager>.Instance;
         _borderManager = GenericSingleton<BorderManager>.Instance;
-        _repositionManager = GenericSingleton<RepositionManager>.Instance;
         CheckLevel();
     }
 
@@ -124,8 +119,9 @@ public class Slime : MonoBehaviour
 
     void Sell()
     {
-        _gameManager.AddGold(_level * _price);
-        //슬라임 리스트에서 제거
+        int price = _slimeManager.SlimeDatas[(int)_slimeType].Gold;
+        _gameManager.AddGold(_level * price);
+        _slimeManager.SellSlime(this);
         Destroy(this.gameObject);
     }
 
@@ -152,13 +148,6 @@ public class Slime : MonoBehaviour
         return false;
     }
 
-    public Vector3 Reposition()
-    {
-        List<Vector3> repositions = _repositionManager.Repositions;
-        int positionIndex = Random.Range(0, repositions.Count);
-        return repositions[positionIndex];
-    }
-
     public void AddExp()
     {
         if (_level == _maxLevel)
@@ -167,6 +156,12 @@ public class Slime : MonoBehaviour
         _exp++;
         if (_exp >= _needExp)
             LevelUp();
+    }
+
+    public void MakeJam()
+    {
+        int makeJam = ((int)_slimeType + 1) * _level;
+        GenericSingleton<GameManager>.Instance.AddJam(makeJam);
     }
 }
 

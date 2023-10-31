@@ -22,4 +22,10 @@ public class RepositionManager : MonoBehaviour
 
         Instantiate(_repositionPrefab, parent);
     }
+
+    public Vector3 Reposition()
+    {
+        int positionIndex = Random.Range(0, _repositions.Count);
+        return _repositions[positionIndex];
+    }
 }

@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 8575383947102995034}
   - component: {fileID: 8575383947102995046}
   m_Layer: 0
-  m_Name: Slime
+  m_Name: Normal Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,8 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431e021d40a1a3640aeb6e0bd6825016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slimeType: 1
-  _price: 100
+  _slimeType: 0
 --- !u!95 &8575383947102995034
 Animator:
   serializedVersion: 5

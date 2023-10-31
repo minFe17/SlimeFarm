@@ -100,8 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431e021d40a1a3640aeb6e0bd6825016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slimeType: 9
-  _price: 0
+  _slimeType: 8
 --- !u!95 &5182895001914830969
 Animator:
   serializedVersion: 5

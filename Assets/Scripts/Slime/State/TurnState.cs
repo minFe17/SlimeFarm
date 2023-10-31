@@ -1,4 +1,5 @@
 using UnityEngine;
+using Utils;
 
 public class TurnState : SlimeState
 {
@@ -12,7 +13,9 @@ public class TurnState : SlimeState
         base.OnEnter(slime);
         _state = EStateType.Turn;
         _slime.Animator.SetBool("isWalk", true);
-        _reposition = _slime.Reposition();
+
+        RepositionManager repositionManager = GenericSingleton<RepositionManager>.Instance;
+        _reposition = repositionManager.Reposition();
     }
 
     public override void MainLoop()

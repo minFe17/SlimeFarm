@@ -1,14 +1,17 @@
+using System.Collections;
 using UnityEngine;
 using Utils;
 
 public class GameManager : MonoBehaviour
 {
     // 싱글턴
+    SlimeManager _slimeManager;
     UIManager _uiManager;
     int _jam;
     int _gold;
     int _maxJam;
     int _maxGold;
+    float _jamCreateDelay = 3f;
 
     bool _isStopGame;
 
@@ -25,6 +28,9 @@ public class GameManager : MonoBehaviour
         _maxGold = 999999999;
         if (_uiManager == null)
             _uiManager = GenericSingleton<UIManager>.Instance;
+        if (_slimeManager == null)
+            _slimeManager = GenericSingleton<SlimeManager>.Instance;
+        StartCoroutine(AutoRoutine());
     }
 
     void Update()
@@ -55,6 +61,18 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    void AutoCreateJam()
+    {
+        int count = _slimeManager.Slimes.Count;
+        for (int i = 0; i < count; i++)
+            _slimeManager.Slimes[i].MakeJam();
+    }
+
+    void AutoSave()
+    {
+        //파일쓰기
+    }
+
     public void AddJam(int jamAmount)
     {
         _jam += jamAmount;
@@ -77,6 +95,27 @@ public class GameManager : MonoBehaviour
         {
             _jam -= jam;
             return true;
+        }
+    }
+
+    public bool UseGold(int gold)
+    {
+        if (_gold - gold < 0)
+            return false;
+        else
+        {
+            _gold -= gold;
+            return true;
+        }
+    }
+
+    IEnumerator AutoRoutine()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(_jamCreateDelay);
+            AutoCreateJam();
+            AutoSave();
         }
     }
 }
