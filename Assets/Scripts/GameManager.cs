@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     // 싱글턴
     SlimeManager _slimeManager;
     UIManager _uiManager;
+    CSVManager _csvManager;
     AudioClipManager _audioClipManager;
 
     int _jam;
@@ -17,19 +18,16 @@ public class GameManager : MonoBehaviour
 
     bool _isStopGame;
 
-    public int Jam { get => _jam; }
-    public int Gold { get => _gold; }
+    public int Jam { get => _jam; set => _jam = value; }
+    public int Gold { get => _gold; set => _gold = value; }
 
     public void Init()
     {
-        // csv 파일 읽고 jam, gold 값 있으면 불러오기
-        // 없으면 초기값
+        _csvManager = GenericSingleton<CSVManager>.Instance;
+        _csvManager.ReadGameData();
         _uiManager = GenericSingleton<UIManager>.Instance;
         _slimeManager = GenericSingleton<SlimeManager>.Instance;
         _audioClipManager = GenericSingleton<AudioClipManager>.Instance;
-
-        _jam = 100;
-        _gold = 200;
         _maxJam = 999999999;
         _maxGold = 999999999;
         StartCoroutine(AutoRoutine());
@@ -64,9 +62,9 @@ public class GameManager : MonoBehaviour
             _slimeManager.Slimes[i].MakeJam();
     }
 
-    void AutoSave()
+    void SaveData()
     {
-        //파일쓰기
+        _csvManager.WriteData();
     }
 
     void Exit()
@@ -121,8 +119,8 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Time.timeScale = 1f;
-        GenericSingleton<AudioClipManager>.Instance.PlaySFXSound(ESFXSoundType.GameResume);
-        // csv파일 저장
+        _audioClipManager.PlaySFXSound(ESFXSoundType.GameResume);
+        SaveData();
         Invoke("Exit", 0.5f);
     }
 
@@ -132,7 +130,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(_jamCreateDelay);
             AutoCreateJam();
-            AutoSave();
+            SaveData();
         }
     }
 }

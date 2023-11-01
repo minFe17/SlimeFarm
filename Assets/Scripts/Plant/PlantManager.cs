@@ -15,8 +15,8 @@ public class PlantManager : MonoBehaviour
 
     public List<MaxSlimeData> MaxSlimeDatas { get => _maxSlimeDatas; }
     public List<JamOutputData> JamOutputDatas { get => _jamOutputDatas; }
-    public int MaxSlimeLevel { get => _maxSlimeLevel; }
-    public int JamOutputLevel { get => _jamOutputLevel; }
+    public int MaxSlimeLevel { get => _maxSlimeLevel; set => _maxSlimeLevel = value; }
+    public int JamOutputLevel { get => _jamOutputLevel; set => _jamOutputLevel = value; }
 
     public void Init()
     {
@@ -27,7 +27,7 @@ public class PlantManager : MonoBehaviour
 
     void SetPlantData()
     {
-        _csvManager.ReadPlantLevelData();
+        _csvManager.ReadPlantData();
     }
 
     void PlayLevelSound()
@@ -43,6 +43,7 @@ public class PlantManager : MonoBehaviour
         if (plantType == EPlantType.JamOutPut)
             _jamOutputLevel++;
         PlayLevelSound();
+        _csvManager.WriteData();
     }
 }
 

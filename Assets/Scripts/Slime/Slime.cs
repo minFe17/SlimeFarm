@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using Utils;
 
@@ -16,27 +15,32 @@ public class Slime : MonoBehaviour
     GameManager _gameManager;
     BorderManager _borderManager;
     AudioClipManager _audioClipManager;
-   
+
     int _level;
     int _maxLevel = 3;
     float _exp;
     float _needExp;
     float _pickTime;
+    bool _isSaveSlime;
 
     public ESlimeType SlimeType { get => _slimeType; }
     public Animator Animator { get => _animator; }
     public SpriteRenderer SpriteRenderer { get => _spriteRenderer; }
-    public int Level { get => _level; }
+    public int Level { get => _level; set => _level = value; }
+    public float EXP { get => _exp; set => _exp = value; }
     public float PickTime { set => _pickTime = value; }
+    public bool IsSaveSlime { set => _isSaveSlime = value; }
 
     void Awake()
     {
         ChangeState(new IdleState());
     }
 
-    void Start()
+    public void Init()
     {
-        Init();
+        _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        SetManager();
         CheckLevel();
     }
 
@@ -46,10 +50,8 @@ public class Slime : MonoBehaviour
         EXPTimer();
     }
 
-    void Init()
+    void SetManager()
     {
-        _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         _slimeManager = GenericSingleton<SlimeManager>.Instance;
         _uiManaeger = GenericSingleton<UIManager>.Instance;
         _gameManager = GenericSingleton<GameManager>.Instance;
@@ -88,9 +90,10 @@ public class Slime : MonoBehaviour
 
     void CheckLevel()
     {
-        // csv파일 읽기 (슬라임 레벨)
-        // 파일이 없으면 레벨 1
-        _level = 1;
+        if (!_isSaveSlime)
+        {
+            _level = 1;
+        }
         _needExp = _level * 100;
         ChangeLevelAnimator();
     }

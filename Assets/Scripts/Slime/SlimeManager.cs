@@ -6,12 +6,13 @@ public class SlimeManager : MonoBehaviour
 {
     // 싱글턴
     List<Slime> _slimes = new List<Slime>();
-    List<GameObject> _slimePrefabs = new List<GameObject>();
     List<SlimeData> _slimeDatas = new List<SlimeData>();
     List<bool> _slimeUnlocks = new List<bool>();
 
     RuntimeAnimatorController[] _levelAnimatorControllers;
 
+    SlimeFactoryManager _slimeFactoryManager;
+    CSVManager _csvManager;
     AudioClipManager _audioClipManager;
 
     public List<Slime> Slimes { get => _slimes; }
@@ -20,32 +21,19 @@ public class SlimeManager : MonoBehaviour
 
     public RuntimeAnimatorController[] LevelAnimatorControllers { get => _levelAnimatorControllers; }
 
-    CSVManager _csvManager;
 
     public void Init()
     {
+        _slimeFactoryManager = GenericSingleton<SlimeFactoryManager>.Instance;
         _csvManager = GenericSingleton<CSVManager>.Instance;
         _audioClipManager = GenericSingleton<AudioClipManager>.Instance;
-        SetSlime(); //팩토리 디자인패턴 사용?
-        SetSlimeData();
         SetAnimatorController();
-        //파일 읽기
-    }
-
-    void SetSlime()
-    {
-        for (int i = 0; i < (int)ESlimeType.Max; i++)
-        {
-            _slimePrefabs.Add(Resources.Load($"Prefabs/Slime/{((ESlimeType)i).ToString()} Slime") as GameObject);
-        }
+        SetSlimeData();
     }
 
     void SetSlimeData()
     {
         _csvManager.ReadSlimeData();
-        // csv파일 읽기 만약 csv파일이 없으면 다 false
-        for (int i = 0; i < _slimeDatas.Count; i++)
-            _slimeUnlocks.Add(false);
     }
 
     void SetAnimatorController()
@@ -59,7 +47,7 @@ public class SlimeManager : MonoBehaviour
     {
         _slimeUnlocks[index] = true;
         _audioClipManager.PlaySFXSound(ESFXSoundType.Unlock);
-        // 파일 쓰기 
+        _csvManager.WriteData();
     }
 
     public bool CalculteMaxSlime()
@@ -73,21 +61,26 @@ public class SlimeManager : MonoBehaviour
             return true;
     }
 
-    public void CreateSlime(int index)
+    public void CreateSlime(ESlimeType slimeType)
     {
         Vector3 position = GenericSingleton<RepositionManager>.Instance.Reposition();
-        GameObject temp = Instantiate(_slimePrefabs[index], position, Quaternion.identity);
-        Slime slime = temp.GetComponent<Slime>();
-        _slimes.Add(slime);
+        Slime slime = _slimeFactoryManager.MakeSlime(slimeType, position);
+        slime.Init();
+        AddSlime(slime);
         _audioClipManager.PlaySFXSound(ESFXSoundType.Buy);
-        // csv파일 쓰기
+        _csvManager.WriteData();
+    }
+
+    public void AddSlime(Slime slime)
+    {
+        _slimes.Add(slime);
     }
 
     public void SellSlime(Slime slime)
     {
         _slimes.Remove(slime);
         _audioClipManager.PlaySFXSound(ESFXSoundType.Sell);
-        // csv파일 쓰기
+        _csvManager.WriteData();
     }
 }
 

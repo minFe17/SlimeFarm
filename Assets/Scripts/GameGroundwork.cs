@@ -11,6 +11,7 @@ public class GameGroundwork: MonoBehaviour
     void Init()
     {
         Groundwork();
+        GenericSingleton<CSVManager>.Instance.Init();
         GenericSingleton<GameManager>.Instance.Init();
         GenericSingleton<SlimeManager>.Instance.Init();
         GenericSingleton<PlantManager>.Instance.Init();
@@ -19,6 +20,7 @@ public class GameGroundwork: MonoBehaviour
 
     void Groundwork()
     {
+        GenericSingleton<SlimeFactoryManager>.Instance.Init();
         GenericSingleton<BorderManager>.Instance.CreateBoard(transform);
         GenericSingleton<RepositionManager>.Instance.Init(transform);
         CreateBackground();

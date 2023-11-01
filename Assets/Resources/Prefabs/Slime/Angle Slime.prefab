@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 8377871858691281770}
   - component: {fileID: 4493010835671836442}
   m_Layer: 0
-  m_Name: Angel Slime
+  m_Name: Angle Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -99,7 +99,7 @@ public class BuySlimeUI : MonoBehaviour
         {
             bool isBuy = _gameManager.UseGold(slimeData.Gold);
             if (isBuy)
-                _slimeManager.CreateSlime(_page);
+                _slimeManager.CreateSlime((ESlimeType)_page);
             else
                 _audioClipManager.PlaySFXSound(ESFXSoundType.Fall); ;
         }
