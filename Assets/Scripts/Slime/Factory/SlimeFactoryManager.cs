@@ -4,7 +4,7 @@ using UnityEngine;
 public class SlimeFactoryManager : MonoBehaviour
 {
     // ╫л╠шео
-    Dictionary<ESlimeType, SlimeFactoryBase> _slimeFactorys = new Dictionary<ESlimeType, SlimeFactoryBase> ();
+    Dictionary<ESlimeType, SlimeFactoryBase> _slimeFactorys = new Dictionary<ESlimeType, SlimeFactoryBase>();
 
     public void Init()
     {

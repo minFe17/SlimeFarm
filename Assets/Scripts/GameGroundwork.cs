@@ -1,7 +1,7 @@
 using UnityEngine;
 using Utils;
 
-public class GameGroundwork: MonoBehaviour
+public class GameGroundwork : MonoBehaviour
 {
     void Start()
     {
@@ -15,6 +15,7 @@ public class GameGroundwork: MonoBehaviour
         GenericSingleton<GameManager>.Instance.Init();
         GenericSingleton<SlimeManager>.Instance.Init();
         GenericSingleton<PlantManager>.Instance.Init();
+        GenericSingleton<NoticeManager>.Instance.Init();
         SetSound();
     }
 

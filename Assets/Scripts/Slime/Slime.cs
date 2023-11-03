@@ -11,7 +11,7 @@ public class Slime : MonoBehaviour
     SpriteRenderer _spriteRenderer;
 
     SlimeManager _slimeManager;
-    UIManager _uiManaeger;
+    UIManager _uiManager;
     GameManager _gameManager;
     BorderManager _borderManager;
     AudioClipManager _audioClipManager;
@@ -53,7 +53,7 @@ public class Slime : MonoBehaviour
     void SetManager()
     {
         _slimeManager = GenericSingleton<SlimeManager>.Instance;
-        _uiManaeger = GenericSingleton<UIManager>.Instance;
+        _uiManager = GenericSingleton<UIManager>.Instance;
         _gameManager = GenericSingleton<GameManager>.Instance;
         _borderManager = GenericSingleton<BorderManager>.Instance;
         _audioClipManager = GenericSingleton<AudioClipManager>.Instance;
@@ -61,7 +61,7 @@ public class Slime : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!_uiManaeger.UI.IsOpenUI)
+        if (!_uiManager.UI.IsOpenUI)
             ChangeState(new TouchState());
     }
 
@@ -69,7 +69,7 @@ public class Slime : MonoBehaviour
     {
         if (_state.State == EStateType.Pick)
         {
-            if (_uiManaeger.SellUI.IsSell)
+            if (_uiManager.SellUI.IsSell)
                 Sell();
             else
                 ChangeState(new IdleState());
@@ -78,7 +78,7 @@ public class Slime : MonoBehaviour
 
     void OnMouseDrag()
     {
-        if (!_uiManaeger.UI.IsOpenUI)
+        if (!_uiManager.UI.IsOpenUI)
             PickTimer();
     }
 
@@ -124,7 +124,7 @@ public class Slime : MonoBehaviour
     void PickTimer()
     {
         _pickTime += Time.deltaTime;
-        if (_pickTime >= 0.5f)
+        if (_pickTime >= 1f)
             ChangeState(new PickState());
     }
 

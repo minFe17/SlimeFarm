@@ -36,7 +36,7 @@ public class WriteData
     {
         List<string[]> datas = new List<string[]>();
         List<Slime> slimes = slimeManager.Slimes;
-        string[] header = new string[] { "Index", "SlimeType", "Level", "Exp", "PositonX" , "PostionY", "PositionZ" };
+        string[] header = new string[] { "Index", "SlimeType", "Level", "EXP", "PositonX", "PostionY", "PositionZ" };
         datas.Add(header);
         for (int i = 0; i < slimes.Count; i++)
         {
@@ -66,7 +66,7 @@ public class WriteData
     {
         List<string[]> datas = new List<string[]>();
 
-        string[] header = new string[] { "MaxSlimeLevel", "JamOutPutLevel" };
+        string[] header = new string[] { "MaxSlimeLevel", "JamOutputLevel" };
         datas.Add(header);
         string[] value = new string[] { plantManager.MaxSlimeLevel.ToString(), plantManager.JamOutputLevel.ToString() };
         datas.Add(value);

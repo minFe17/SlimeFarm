@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator AutoRoutine()
     {
-        while(true)
+        while (true)
         {
             yield return new WaitForSeconds(_jamCreateDelay);
             AutoCreateJam();

@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class AngleSlimeFactory : SlimeFactoryBase
+public class AngelSlimeFactory : SlimeFactoryBase
 {
     protected override void Init()
     {
-        _slimePrefab = Resources.Load("Prefabs/Slime/Angle Slime") as GameObject;
-        _factoryManager.AddFactorys(ESlimeType.Angle, this);
+        _slimePrefab = Resources.Load("Prefabs/Slime/Angel Slime") as GameObject;
+        _factoryManager.AddFactorys(ESlimeType.Angel, this);
     }
 
     public override Slime MakeSlime(Vector3 position)

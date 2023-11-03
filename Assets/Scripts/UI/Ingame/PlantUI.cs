@@ -53,10 +53,12 @@ public class PlantUI : MonoBehaviour
         _jamOutputLevelUpGold.text = string.Format("{0:n0}", jamOutputData.JamOutputGold);
     }
 
-    void PlayFallSound()
+    void BuyFail()
     {
         AudioClipManager audioClipManager = GenericSingleton<AudioClipManager>.Instance;
-        audioClipManager.PlaySFXSound(ESFXSoundType.Fall);
+        audioClipManager.PlaySFXSound(ESFXSoundType.Fail);
+
+        GenericSingleton<NoticeManager>.Instance.SendMessage(ENoticeType.NotGold);
     }
 
     public void BuyMaxSlime()
@@ -70,7 +72,7 @@ public class PlantUI : MonoBehaviour
             MaxSlimeChange();
         }
         else
-            PlayFallSound();
+            BuyFail();
     }
 
     public void BuyJamOutput()
@@ -84,6 +86,6 @@ public class PlantUI : MonoBehaviour
             JamOutputChange();
         }
         else
-            PlayFallSound();
+            BuyFail();
     }
 }

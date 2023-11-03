@@ -20,6 +20,7 @@ public class BuySlimeUI : MonoBehaviour
     SlimeManager _slimeManager;
     GameManager _gameManager;
     AudioClipManager _audioClipManager;
+    NoticeManager _noticeManager;
 
     int _page;
 
@@ -28,6 +29,7 @@ public class BuySlimeUI : MonoBehaviour
         _slimeManager = GenericSingleton<SlimeManager>.Instance;
         _gameManager = GenericSingleton<GameManager>.Instance;
         _audioClipManager = GenericSingleton<AudioClipManager>.Instance;
+        _noticeManager = GenericSingleton<NoticeManager>.Instance;
         Change();
     }
 
@@ -88,7 +90,10 @@ public class BuySlimeUI : MonoBehaviour
             Change();
         }
         else
-            _audioClipManager.PlaySFXSound(ESFXSoundType.Fall);
+        {
+            _audioClipManager.PlaySFXSound(ESFXSoundType.Fail);
+            _noticeManager.SendMessage(ENoticeType.NotJam);
+        }
     }
 
     public void BuySlime()
@@ -101,9 +106,15 @@ public class BuySlimeUI : MonoBehaviour
             if (isBuy)
                 _slimeManager.CreateSlime((ESlimeType)_page);
             else
-                _audioClipManager.PlaySFXSound(ESFXSoundType.Fall); ;
+            {
+                _audioClipManager.PlaySFXSound(ESFXSoundType.Fail);
+                _noticeManager.SendMessage(ENoticeType.NotGold);
+            }
         }
         else
-            _audioClipManager.PlaySFXSound(ESFXSoundType.Fall);
+        {
+            _audioClipManager.PlaySFXSound(ESFXSoundType.Fail);
+            _noticeManager.SendMessage(ENoticeType.NotMaxSlime);
+        }
     }
 }

@@ -21,7 +21,6 @@ public class SlimeManager : MonoBehaviour
 
     public RuntimeAnimatorController[] LevelAnimatorControllers { get => _levelAnimatorControllers; }
 
-
     public void Init()
     {
         _slimeFactoryManager = GenericSingleton<SlimeFactoryManager>.Instance;
@@ -78,9 +77,11 @@ public class SlimeManager : MonoBehaviour
 
     public void SellSlime(Slime slime)
     {
+        GenericSingleton<NoticeManager>.Instance.HideMessage();
         _slimes.Remove(slime);
         _audioClipManager.PlaySFXSound(ESFXSoundType.Sell);
         _csvManager.WriteData();
+        System.GC.Collect();
     }
 }
 
@@ -95,7 +96,7 @@ public enum ESlimeType
     Art,
     Cook,
     Pudding,
-    Angle,
+    Angel,
     Devil,
     King,
     Unicorn,

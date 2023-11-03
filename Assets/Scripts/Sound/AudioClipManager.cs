@@ -24,7 +24,7 @@ public class AudioClipManager : MonoBehaviour
 
     void SetSFX()
     {
-        for(int i=0; i<(int)ESFXSoundType.Max; i++)
+        for (int i = 0; i < (int)ESFXSoundType.Max; i++)
         {
             string audioSoundName = ((ESFXSoundType)i).ToString();
             AudioClip audioSound = Resources.Load($"Prefabs/AudioClip/SFX/{audioSoundName}") as AudioClip;
@@ -47,7 +47,7 @@ public enum ESFXSoundType
 {
     Button,
     Buy,
-    Fall,
+    Fail,
     GameStop,
     GameResume,
     Grow,
