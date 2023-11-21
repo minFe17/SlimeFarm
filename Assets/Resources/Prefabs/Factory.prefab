@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 2033186091988609346}
   - component: {fileID: 2033186091988609347}
   m_Layer: 0
-  m_Name: Angle Slime Factory
+  m_Name: Angel Slime Factory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
