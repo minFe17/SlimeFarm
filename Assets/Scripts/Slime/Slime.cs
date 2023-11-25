@@ -74,6 +74,7 @@ public class Slime : MonoBehaviour
             else
                 ChangeState(new IdleState());
         }
+        _pickTime = 0f;
     }
 
     void OnMouseDrag()

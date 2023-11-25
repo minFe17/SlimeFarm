@@ -28,29 +28,27 @@ public class PlantUI : MonoBehaviour
     void MaxSlimeChange()
     {
         int level = _plantManager.MaxSlimeLevel;
-        if (level - 1 == _plantManager.MaxSlimeDatas.Count)
+        MaxSlimeData maxSlimeData = _plantManager.MaxSlimeDatas[level];
+        _maxSlimeText.text = $"슬라임 수용량 {maxSlimeData.MaxSlime}";
+        _maxSlimeLevelUpGold.text = string.Format("{0:n0}", maxSlimeData.MaxSlimeGold);
+        if (level == _plantManager.MaxSlimeDatas.Count - 1)
         {
             _maxSlimeButton.SetActive(false);
             return;
         }
-
-        MaxSlimeData maxSlimeData = _plantManager.MaxSlimeDatas[level];
-        _maxSlimeText.text = $"슬라임 수용량 {maxSlimeData.MaxSlime}";
-        _maxSlimeLevelUpGold.text = string.Format("{0:n0}", maxSlimeData.MaxSlimeGold);
     }
 
     void JamOutputChange()
     {
         int level = _plantManager.JamOutputLevel;
-        if (level - 1 == _plantManager.JamOutputDatas.Count)
+        JamOutputData jamOutputData = _plantManager.JamOutputDatas[level];
+        _jamOutputText.text = $"잼 생산량 x {jamOutputData.JamOutput}";
+        _jamOutputLevelUpGold.text = string.Format("{0:n0}", jamOutputData.JamOutputGold);
+        if (level == _plantManager.JamOutputDatas.Count - 1)
         {
             _jamOutputButton.SetActive(false);
             return;
         }
-
-        JamOutputData jamOutputData = _plantManager.JamOutputDatas[level];
-        _jamOutputText.text = $"잼 생산량 x {jamOutputData.JamOutput}";
-        _jamOutputLevelUpGold.text = string.Format("{0:n0}", jamOutputData.JamOutputGold);
     }
 
     void BuyFail()
