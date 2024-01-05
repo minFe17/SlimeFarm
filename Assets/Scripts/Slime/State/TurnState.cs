@@ -28,6 +28,13 @@ public class TurnState : SlimeState
         _slime.Animator.SetBool("isWalk", false);
     }
 
+    protected override void CheckTime()
+    {
+        _time += Time.deltaTime;
+        if (_time >= _turnStateTime)
+            _slime.ChangeState(new IdleState());
+    }
+
     void Turn()
     {
         Vector3 targetPos = (_reposition - _slime.transform.position).normalized;
@@ -41,12 +48,5 @@ public class TurnState : SlimeState
             _slime.SpriteRenderer.flipX = false;
 
         CheckTime();
-    }
-
-    protected override void CheckTime()
-    {
-        _time += Time.deltaTime;
-        if (_time >= _turnStateTime)
-            _slime.ChangeState(new IdleState());
     }
 }

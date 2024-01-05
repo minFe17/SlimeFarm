@@ -4,6 +4,7 @@ using Utils;
 public class PickState : SlimeState
 {
     NoticeManager _noticeManager;
+
     public override void OnEnter(Slime slime)
     {
         base.OnEnter(slime);

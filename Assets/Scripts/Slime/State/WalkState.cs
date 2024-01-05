@@ -24,6 +24,13 @@ public class WalkState : SlimeState
         _slime.Animator.SetBool("isWalk", false);
     }
 
+    protected override void CheckTime()
+    {
+        _time += Time.deltaTime;
+        if (_time >= _walkStateTime)
+            _slime.ChangeState(new IdleState());
+    }
+
     void SetWalkSpeed()
     {
         _speedX = Random.Range(-0.8f, 0.8f);
@@ -49,12 +56,5 @@ public class WalkState : SlimeState
         float newX = _speedX * Time.deltaTime;
         float newY = _speedY * Time.deltaTime;
         _slime.transform.Translate(newX, newY, newY);
-    }
-
-    protected override void CheckTime()
-    {
-        _time += Time.deltaTime;
-        if (_time >= _walkStateTime)
-            _slime.ChangeState(new IdleState());
     }
 }
