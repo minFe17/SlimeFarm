@@ -17,6 +17,7 @@ public class BuyUI : MonoBehaviour
     [SerializeField] Animator _animator;
 
     AudioClipManager _audioClipManager;
+    SpriteManager _spriteManager;
 
     Image _image;
     Sprite _onSprite;
@@ -25,9 +26,10 @@ public class BuyUI : MonoBehaviour
 
     void Start()
     {
-        SetSprite();
         _image = GetComponent<Image>();
         _audioClipManager = GenericSingleton<AudioClipManager>.Instance;
+        _spriteManager = GenericSingleton<SpriteManager>.Instance;
+        SetSprite();
     }
 
     void LateUpdate()
@@ -58,8 +60,8 @@ public class BuyUI : MonoBehaviour
     void SetSprite()
     {
         string buttonSprite = _buttonType.ToString();
-        _onSprite = Resources.Load($"Prefabs/Sprite/UI/{buttonSprite} Over Sprite") as Sprite;
-        _offSprite = Resources.Load($"Prefabs/Sprite/UI/{buttonSprite} Sprite") as Sprite;
+        _onSprite = _spriteManager.UISprite.GetSprite($"{buttonSprite} Over Sprite");
+        _offSprite = _spriteManager.UISprite.GetSprite($"{buttonSprite} Sprite");
     }
 
     public void HideUI()

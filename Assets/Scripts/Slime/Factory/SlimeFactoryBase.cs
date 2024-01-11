@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.U2D;
 using Utils;
 
 public abstract class SlimeFactoryBase : MonoBehaviour

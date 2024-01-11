@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BuyUISprite
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 21300000, guid: 33f88b9e955f8084bbd133f3e39cd509, type: 2}
+    - {fileID: 21300000, guid: 3f0ea4da27505fb449ae088dd4d1d682, type: 2}
+    - {fileID: 21300000, guid: 7f4c09613a7380845806a15e385625f1, type: 2}
+    - {fileID: 21300000, guid: b3bf0993dad502c4f9c8d9c66411e182, type: 2}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 7f4c09613a7380845806a15e385625f1, type: 2}
+  - {fileID: 21300000, guid: b3bf0993dad502c4f9c8d9c66411e182, type: 2}
+  - {fileID: 21300000, guid: 3f0ea4da27505fb449ae088dd4d1d682, type: 2}
+  - {fileID: 21300000, guid: 33f88b9e955f8084bbd133f3e39cd509, type: 2}
+  m_PackedSpriteNamesToIndex:
+  - Slime Over Sprite
+  - Slime Sprite
+  - Plant Sprite
+  - Plant Over Sprite
+  m_RenderDataMap: {}
+  m_Tag: BuyUISprite
+  m_IsVariant: 0

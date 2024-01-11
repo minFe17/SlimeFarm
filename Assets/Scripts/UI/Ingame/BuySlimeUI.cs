@@ -7,7 +7,7 @@ public class BuySlimeUI : MonoBehaviour
     [Header("Page")]
     [SerializeField] Text _pageText;
 
-    [Header("UnLock Panel")]
+    [Header("Unlock Panel")]
     [SerializeField] Image _slimeImage;
     [SerializeField] Text _slimeName;
     [SerializeField] Text _slimeGold;
@@ -21,7 +21,8 @@ public class BuySlimeUI : MonoBehaviour
     GameManager _gameManager;
     AudioClipManager _audioClipManager;
     NoticeManager _noticeManager;
-
+    SpriteManager _spriteManager;
+    
     int _page;
 
     void Start()
@@ -30,6 +31,7 @@ public class BuySlimeUI : MonoBehaviour
         _gameManager = GenericSingleton<GameManager>.Instance;
         _audioClipManager = GenericSingleton<AudioClipManager>.Instance;
         _noticeManager = GenericSingleton<NoticeManager>.Instance;
+        _spriteManager = GenericSingleton<SpriteManager>.Instance;
         Change();
     }
 
@@ -48,18 +50,23 @@ public class BuySlimeUI : MonoBehaviour
     void LockSlime(SlimeData slimeData)
     {
         _lockPanel.SetActive(true);
-        _lockSlimeImage.sprite = slimeData.Sprite;
-        _lockSlimeImage.SetNativeSize();
+        ChangeSlimeImage(slimeData, _lockSlimeImage);
         _lockSlimeJam.text = string.Format("{0:n0}", slimeData.Jam);
     }
 
     void UnlockSlime(SlimeData slimeData)
     {
         _lockPanel.SetActive(false);
-        _slimeImage.sprite = slimeData.Sprite;
-        _slimeImage.SetNativeSize();
+        ChangeSlimeImage(slimeData, _slimeImage);
         _slimeName.text = slimeData.Name;
         _slimeGold.text = string.Format("{0:n0}", slimeData.Gold);
+    }
+
+    void ChangeSlimeImage(SlimeData slimeData, Image slimeImage)
+    {
+        ESlimeType slimeType = (ESlimeType)slimeData.Index-1;
+        slimeImage.sprite = _spriteManager.SlimeSprite.GetSprite(slimeType.ToString());
+        slimeImage.SetNativeSize();
     }
 
     public void MoveLeftPage()

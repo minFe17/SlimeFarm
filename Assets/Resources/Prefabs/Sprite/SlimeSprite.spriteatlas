@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SlimeSprite
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 21300000, guid: 6bd0dbe03b3a3f043b97cbf5dc309a9e, type: 2}
+    - {fileID: 21300000, guid: 23a80c85a2e8b3c45a328d69c2a3aef6, type: 2}
+    - {fileID: 21300000, guid: b84810dd794b92d4ca1b1ef32bbf2ae7, type: 2}
+    - {fileID: 21300000, guid: a0d96ff8208bf264fa3fb2878ec1476f, type: 2}
+    - {fileID: 21300000, guid: 00b73160b60dca34dae2f0814a6cecbc, type: 2}
+    - {fileID: 21300000, guid: 953f7ff0dedacf44fb7961589304c487, type: 2}
+    - {fileID: 21300000, guid: 3ff1515beeca8824299be392a58d8822, type: 2}
+    - {fileID: 21300000, guid: c5af6acb2229118489a30479e74010a2, type: 2}
+    - {fileID: 21300000, guid: 3867c4d7619a28042ab48e1005bbb5fe, type: 2}
+    - {fileID: 21300000, guid: 61ca5e90308730246bc4ecc34745548a, type: 2}
+    - {fileID: 21300000, guid: 4f4851590096d9f4da6ba454aabad640, type: 2}
+    - {fileID: 21300000, guid: 7417dd092b89c1348a733a30575b5379, type: 2}
+    - {fileID: 21300000, guid: 1d75f1f333cfc9042b50a84b29cf1efe, type: 2}
+    - {fileID: 21300000, guid: 46f93eb555b4df241ac902ddbc8bef44, type: 2}
+    - {fileID: 21300000, guid: 990c06e4883a00648920c9ad68710e83, type: 2}
+    - {fileID: 21300000, guid: 94d282e2047eade4a8de53c9fdd05624, type: 2}
+    - {fileID: 21300000, guid: c865955f0f33e9c41a5bf3f634ddb7e4, type: 2}
+    - {fileID: 21300000, guid: fb720e490b8e9ef40bfc473d0fb36ec1, type: 2}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 00b73160b60dca34dae2f0814a6cecbc, type: 2}
+  - {fileID: 21300000, guid: 61ca5e90308730246bc4ecc34745548a, type: 2}
+  - {fileID: 21300000, guid: 6bd0dbe03b3a3f043b97cbf5dc309a9e, type: 2}
+  - {fileID: 21300000, guid: 953f7ff0dedacf44fb7961589304c487, type: 2}
+  - {fileID: 21300000, guid: 94d282e2047eade4a8de53c9fdd05624, type: 2}
+  - {fileID: 21300000, guid: 1d75f1f333cfc9042b50a84b29cf1efe, type: 2}
+  - {fileID: 21300000, guid: 990c06e4883a00648920c9ad68710e83, type: 2}
+  - {fileID: 21300000, guid: 23a80c85a2e8b3c45a328d69c2a3aef6, type: 2}
+  - {fileID: 21300000, guid: 46f93eb555b4df241ac902ddbc8bef44, type: 2}
+  - {fileID: 21300000, guid: 3867c4d7619a28042ab48e1005bbb5fe, type: 2}
+  - {fileID: 21300000, guid: a0d96ff8208bf264fa3fb2878ec1476f, type: 2}
+  - {fileID: 21300000, guid: 7417dd092b89c1348a733a30575b5379, type: 2}
+  - {fileID: 21300000, guid: fb720e490b8e9ef40bfc473d0fb36ec1, type: 2}
+  - {fileID: 21300000, guid: 4f4851590096d9f4da6ba454aabad640, type: 2}
+  - {fileID: 21300000, guid: 3ff1515beeca8824299be392a58d8822, type: 2}
+  - {fileID: 21300000, guid: c5af6acb2229118489a30479e74010a2, type: 2}
+  - {fileID: 21300000, guid: b84810dd794b92d4ca1b1ef32bbf2ae7, type: 2}
+  - {fileID: 21300000, guid: c865955f0f33e9c41a5bf3f634ddb7e4, type: 2}
+  m_PackedSpriteNamesToIndex:
+  - Jelly
+  - King
+  - Normal
+  - Worm
+  - Earth
+  - Shark
+  - Diamond
+  - Rock
+  - Sushi
+  - Pudding
+  - Mummy
+  - Robot
+  - Devil
+  - Unicorn
+  - Art
+  - Cook
+  - Bear
+  - Angel
+  m_RenderDataMap: {}
+  m_Tag: SlimeSprite
+  m_IsVariant: 0

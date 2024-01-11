@@ -160,9 +160,8 @@ public class ReadData
 
             temp.Index = int.Parse(values[0]);
             temp.Name = $"{values[1]} ΩΩ∂Û¿”";
-            temp.Sprite = Resources.Load($"Prefabs/Sprite/Slime/{values[2]}") as Sprite;
-            temp.Jam = int.Parse(values[3]);
-            temp.Gold = int.Parse(values[4]);
+            temp.Jam = int.Parse(values[2]);
+            temp.Gold = int.Parse(values[3]);
 
             slimeManager.SlimeDatas.Add(temp);
         }
