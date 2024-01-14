@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1372389948801611943}
   - component: {fileID: 8884523779983383978}
-  - component: {fileID: 1046410065288511198}
+  - component: {fileID: 6354592089310710577}
   - component: {fileID: 2082478416040049645}
   - component: {fileID: 2456904205052640008}
   m_Layer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 599123611
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0ccee697df3967841b030a95ff8dcc8a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,10 +85,10 @@ SpriteRenderer:
   m_Size: {x: 1.92, y: 1.92}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1046410065288511198
+--- !u!114 &6354592089310710577
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,10 +97,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2853138423507969320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 431e021d40a1a3640aeb6e0bd6825016, type: 3}
+  m_Script: {fileID: 11500000, guid: 04d9080b98516fb499640daa47f152db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slimeType: 6
+  _slimeSprite: {fileID: 8884523779983383978}
+  _shadowSprite: {fileID: 9132665863476545298}
 --- !u!95 &2082478416040049645
 Animator:
   serializedVersion: 5
@@ -208,10 +209,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 599123611
+  m_SortingLayer: 3
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 897c542affa1c624da03b90c105313d5, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -219,6 +220,6 @@ SpriteRenderer:
   m_Size: {x: 1.125, y: 0.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

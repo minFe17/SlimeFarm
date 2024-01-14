@@ -70,10 +70,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 599123611
+  m_SortingLayer: 3
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 897c542affa1c624da03b90c105313d5, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 1.125, y: 0.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8044605756351160918
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3411753058818854171}
   - component: {fileID: 7122548832731734898}
-  - component: {fileID: 5058667965406714558}
+  - component: {fileID: 8719446542752847260}
   - component: {fileID: 5426209238821649445}
   - component: {fileID: 8466670822274055866}
   m_Layer: 0
@@ -161,7 +161,7 @@ SpriteRenderer:
   m_SortingLayerID: 599123611
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 764f930ba03e6324d805335eb66b8c98, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -169,10 +169,10 @@ SpriteRenderer:
   m_Size: {x: 1.5625, y: 1.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5058667965406714558
+--- !u!114 &8719446542752847260
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,10 +181,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8044605756351160918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 431e021d40a1a3640aeb6e0bd6825016, type: 3}
+  m_Script: {fileID: 11500000, guid: 3138bb867b3d49c4c97a91d044cc28bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slimeType: 17
+  _slimeSprite: {fileID: 7122548832731734898}
+  _shadowSprite: {fileID: 2617482105847067496}
 --- !u!95 &5426209238821649445
 Animator:
   serializedVersion: 5

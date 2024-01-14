@@ -70,10 +70,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 599123611
+  m_SortingLayer: 3
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 897c542affa1c624da03b90c105313d5, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 1.125, y: 0.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &754343049940124154
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2564165091087584294}
   - component: {fileID: 2504474385802937116}
-  - component: {fileID: 5491599788860730357}
+  - component: {fileID: 969151239053603636}
   - component: {fileID: 2898099311746312768}
   - component: {fileID: 6673389050060641118}
   m_Layer: 0
@@ -161,7 +161,7 @@ SpriteRenderer:
   m_SortingLayerID: 599123611
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bdcaeec5459b7314781414725fab72cd, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -169,10 +169,10 @@ SpriteRenderer:
   m_Size: {x: 1.92, y: 1.92}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5491599788860730357
+--- !u!114 &969151239053603636
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,10 +181,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 754343049940124154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 431e021d40a1a3640aeb6e0bd6825016, type: 3}
+  m_Script: {fileID: 11500000, guid: 86ccf5f166cf3964ba424954daf8755a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slimeType: 12
+  _slimeSprite: {fileID: 2504474385802937116}
+  _shadowSprite: {fileID: 741912991474328589}
 --- !u!95 &2898099311746312768
 Animator:
   serializedVersion: 5

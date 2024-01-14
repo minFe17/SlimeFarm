@@ -3,12 +3,15 @@ using Utils;
 
 public class Slime : MonoBehaviour
 {
-    [Header("Type")]
-    [SerializeField] ESlimeType _slimeType;
+    [Header("Sprite")]
+    [SerializeField] protected SpriteRenderer _slimeSprite;
+    [SerializeField] protected SpriteRenderer _shadowSprite;
+
+    protected ESlimeType _slimeType;
+    protected SpriteManager _spriteManager;
 
     SlimeState _state;
     Animator _animator;
-    SpriteRenderer _spriteRenderer;
 
     SlimeManager _slimeManager;
     UIManager _uiManager;
@@ -25,21 +28,21 @@ public class Slime : MonoBehaviour
 
     public ESlimeType SlimeType { get => _slimeType; }
     public Animator Animator { get => _animator; }
-    public SpriteRenderer SpriteRenderer { get => _spriteRenderer; }
+    public SpriteRenderer SlimeSpriteRenderer { get => _slimeSprite; }
     public int Level { get => _level; set => _level = value; }
     public float EXP { get => _exp; set => _exp = value; }
     public float PickTime { set => _pickTime = value; }
     public bool IsSaveSlime { set => _isSaveSlime = value; }
 
-    void Awake()
+    protected virtual void Awake()
     {
         ChangeState(new IdleState());
+        _spriteManager = GenericSingleton<SpriteManager>.Instance;
     }
 
     public void Init()
     {
         _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         SetManager();
         CheckLevel();
     }

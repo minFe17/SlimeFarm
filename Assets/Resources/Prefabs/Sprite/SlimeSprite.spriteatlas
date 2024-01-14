@@ -62,6 +62,7 @@ SpriteAtlas:
     - {fileID: 21300000, guid: 94d282e2047eade4a8de53c9fdd05624, type: 2}
     - {fileID: 21300000, guid: c865955f0f33e9c41a5bf3f634ddb7e4, type: 2}
     - {fileID: 21300000, guid: fb720e490b8e9ef40bfc473d0fb36ec1, type: 2}
+    - {fileID: 21300000, guid: 9574e8c6e20e2eb43b1f560d2494b065, type: 2}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -76,6 +77,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 990c06e4883a00648920c9ad68710e83, type: 2}
   - {fileID: 21300000, guid: 23a80c85a2e8b3c45a328d69c2a3aef6, type: 2}
   - {fileID: 21300000, guid: 46f93eb555b4df241ac902ddbc8bef44, type: 2}
+  - {fileID: 21300000, guid: 9574e8c6e20e2eb43b1f560d2494b065, type: 2}
   - {fileID: 21300000, guid: 3867c4d7619a28042ab48e1005bbb5fe, type: 2}
   - {fileID: 21300000, guid: a0d96ff8208bf264fa3fb2878ec1476f, type: 2}
   - {fileID: 21300000, guid: 7417dd092b89c1348a733a30575b5379, type: 2}
@@ -95,6 +97,7 @@ SpriteAtlas:
   - Diamond
   - Rock
   - Sushi
+  - Shadow
   - Pudding
   - Mummy
   - Robot

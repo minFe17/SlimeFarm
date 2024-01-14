@@ -36,9 +36,9 @@ public class WalkState : SlimeState
         _speedX = Random.Range(-0.8f, 0.8f);
         _speedY = Random.Range(-0.8f, 0.8f);
         if (_speedX < 0)
-            _slime.SpriteRenderer.flipX = true;
+            _slime.SlimeSpriteRenderer.flipX = true;
         else
-            _slime.SpriteRenderer.flipX = false;
+            _slime.SlimeSpriteRenderer.flipX = false;
     }
 
     void Move()

@@ -43,9 +43,9 @@ public class TurnState : SlimeState
             _slime.ChangeState(new IdleState());
 
         if (targetPos.x < 0)
-            _slime.SpriteRenderer.flipX = true;
+            _slime.SlimeSpriteRenderer.flipX = true;
         else
-            _slime.SpriteRenderer.flipX = false;
+            _slime.SlimeSpriteRenderer.flipX = false;
 
         CheckTime();
     }
