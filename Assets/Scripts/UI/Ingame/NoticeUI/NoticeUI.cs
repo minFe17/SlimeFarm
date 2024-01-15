@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
+using Utils;
 
 public class NoticeUI : MonoBehaviour
 {
@@ -11,6 +13,11 @@ public class NoticeUI : MonoBehaviour
     [Header("Message Delay")]
     [SerializeField] float _hideDelay;
 
+    [Header("Sprite")]
+    [SerializeField] Image _panelImage;
+
+    SpriteAtlas _uiSprite;
+
     RectTransform _rectTransform;
     Vector2 _showPosition;
     Vector2 _hidePosition;
@@ -19,9 +26,16 @@ public class NoticeUI : MonoBehaviour
 
     void Start()
     {
+        _uiSprite = GenericSingleton<SpriteManager>.Instance.UISprite;
         _rectTransform = GetComponent<RectTransform>();
         _showPosition = new Vector2(0, -3);
         _hidePosition = _rectTransform.anchoredPosition;
+        SetSprite();
+    }
+
+    void SetSprite()
+    {
+        _panelImage.sprite = _uiSprite.GetSprite("Panel");
     }
 
     public void ShowMessage(string message)

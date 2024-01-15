@@ -1,9 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 using Utils;
 
 public class PlantUI : MonoBehaviour
 {
+    [SerializeField] Image _panelImage;
+    [SerializeField] List<Image> _goldIcons;
+    [SerializeField] List<Image> _buttonImages;
+
     [Header("Max Slime")]
     [SerializeField] Text _maxSlimeText;
     [SerializeField] Text _maxSlimeLevelUpGold;
@@ -14,15 +20,36 @@ public class PlantUI : MonoBehaviour
     [SerializeField] Text _jamOutputLevelUpGold;
     [SerializeField] GameObject _jamOutputButton;
 
+    [Header("Max Slime Sprite")]
+    [SerializeField] Image _maxSlimeIcon;
+
+    [Header("Jam Output Sprite")]
+    [SerializeField] Image _jamOutputIcon;
+
     PlantManager _plantManager;
     GameManager _gameManager;
+    SpriteAtlas _uiSprite;
 
     void Start()
     {
         _plantManager = GenericSingleton<PlantManager>.Instance;
         _gameManager = GenericSingleton<GameManager>.Instance;
+        _uiSprite = GenericSingleton<SpriteManager>.Instance.UISprite;
+        SetSprite();
         MaxSlimeChange();
         JamOutputChange();
+    }
+
+    void SetSprite()
+    {
+        for (int i = 0; i < _goldIcons.Count; i++)
+        {
+            _goldIcons[i].sprite = _uiSprite.GetSprite("Gold");
+            _buttonImages[i].sprite = _uiSprite.GetSprite("Panel");
+        }
+
+        _maxSlimeIcon.sprite = _uiSprite.GetSprite("Max Slime");
+        _jamOutputIcon.sprite = _uiSprite.GetSprite("Jam Output");
     }
 
     void MaxSlimeChange()

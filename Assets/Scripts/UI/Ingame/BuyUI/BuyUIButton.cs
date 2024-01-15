@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 using Utils;
 
-public class BuyUI : MonoBehaviour
+public class BuyUIButton : MonoBehaviour
 {
     [Header("Button Type")]
     [SerializeField] EBuyButtonType _buttonType;
@@ -11,14 +12,15 @@ public class BuyUI : MonoBehaviour
     [SerializeField] UI _ui;
 
     [Header("Other Buy Button")]
-    [SerializeField] BuyUI _otherButton;
+    [SerializeField] BuyUIButton _otherButton;
 
     [Header("UI Panel Animator")]
     [SerializeField] Animator _animator;
 
     AudioClipManager _audioClipManager;
-    SpriteManager _spriteManager;
+    SpriteAtlas _uiSprite;
 
+    Button _button;
     Image _image;
     Sprite _onSprite;
     Sprite _offSprite;
@@ -26,9 +28,10 @@ public class BuyUI : MonoBehaviour
 
     void Start()
     {
+        _button = GetComponent<Button>();
         _image = GetComponent<Image>();
         _audioClipManager = GenericSingleton<AudioClipManager>.Instance;
-        _spriteManager = GenericSingleton<SpriteManager>.Instance;
+        _uiSprite = GenericSingleton<SpriteManager>.Instance.UISprite;
         SetSprite();
     }
 
@@ -60,8 +63,19 @@ public class BuyUI : MonoBehaviour
     void SetSprite()
     {
         string buttonSprite = _buttonType.ToString();
-        _onSprite = _spriteManager.UISprite.GetSprite($"{buttonSprite} Over Sprite");
-        _offSprite = _spriteManager.UISprite.GetSprite($"{buttonSprite} Sprite");
+        _onSprite = _uiSprite.GetSprite($"{buttonSprite} Over");
+        _offSprite = _uiSprite.GetSprite($"{buttonSprite}");
+        SetSpriteState();
+    }
+
+    void SetSpriteState()
+    {
+        SpriteState spriteState = new SpriteState();
+        spriteState.highlightedSprite = _onSprite;
+        spriteState.pressedSprite = _onSprite;
+        spriteState.selectedSprite = _onSprite;
+
+        _button.spriteState = spriteState;
     }
 
     public void HideUI()

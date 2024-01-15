@@ -23,7 +23,7 @@ public class SpriteManager : MonoBehaviour
         get
         {
             if (_uiSprite == null)
-                _uiSprite = Resources.Load("Prefabs/Sprite/BuyUISprite") as SpriteAtlas;
+                _uiSprite = Resources.Load("Prefabs/Sprite/UISprite") as SpriteAtlas;
             return _uiSprite;
         }
     }

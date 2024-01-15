@@ -4,24 +4,23 @@ using Utils;
 
 public class BuySlimeUI : MonoBehaviour
 {
+    [SerializeField] BuySlimeSprite _buySlimeSprite;
+
     [Header("Page")]
     [SerializeField] Text _pageText;
 
     [Header("Unlock Panel")]
-    [SerializeField] Image _slimeImage;
     [SerializeField] Text _slimeName;
     [SerializeField] Text _slimeGold;
 
     [Header("Lock Panel")]
     [SerializeField] GameObject _lockPanel;
-    [SerializeField] Image _lockSlimeImage;
     [SerializeField] Text _lockSlimeJam;
 
     SlimeManager _slimeManager;
     GameManager _gameManager;
     AudioClipManager _audioClipManager;
     NoticeManager _noticeManager;
-    SpriteManager _spriteManager;
     
     int _page;
 
@@ -31,7 +30,6 @@ public class BuySlimeUI : MonoBehaviour
         _gameManager = GenericSingleton<GameManager>.Instance;
         _audioClipManager = GenericSingleton<AudioClipManager>.Instance;
         _noticeManager = GenericSingleton<NoticeManager>.Instance;
-        _spriteManager = GenericSingleton<SpriteManager>.Instance;
         Change();
     }
 
@@ -50,23 +48,16 @@ public class BuySlimeUI : MonoBehaviour
     void LockSlime(SlimeData slimeData)
     {
         _lockPanel.SetActive(true);
-        ChangeSlimeImage(slimeData, _lockSlimeImage);
+        _buySlimeSprite.ChangeSlimeImage(slimeData, ELockType.Lock);
         _lockSlimeJam.text = string.Format("{0:n0}", slimeData.Jam);
     }
 
     void UnlockSlime(SlimeData slimeData)
     {
         _lockPanel.SetActive(false);
-        ChangeSlimeImage(slimeData, _slimeImage);
+        _buySlimeSprite.ChangeSlimeImage(slimeData, ELockType.Unlock);
         _slimeName.text = slimeData.Name;
         _slimeGold.text = string.Format("{0:n0}", slimeData.Gold);
-    }
-
-    void ChangeSlimeImage(SlimeData slimeData, Image slimeImage)
-    {
-        ESlimeType slimeType = (ESlimeType)slimeData.Index-1;
-        slimeImage.sprite = _spriteManager.SlimeSprite.GetSprite(slimeType.ToString());
-        slimeImage.SetNativeSize();
     }
 
     public void MoveLeftPage()
@@ -124,4 +115,10 @@ public class BuySlimeUI : MonoBehaviour
             _noticeManager.SendMessage(ENoticeType.NotMaxSlime);
         }
     }
+}
+
+public enum ELockType
+{
+    Unlock,
+    Lock,
 }
