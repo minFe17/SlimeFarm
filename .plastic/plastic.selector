@@ -1,4 +1,0 @@
-repository "Slime@minFe@cloud"
-  path "/"
-    br "/main"
-    co "/main"
