@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: AudioClip
+  m_EditorClassIdentifier: 
+  m_GroupName: AudioClip
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 8ddb8709f639fc148a32d20f4afba838
+  m_SerializeEntries:
+  - m_GUID: fbd50b6f750f01a42a40ead806f44a8e
+    m_Address: BGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BGM
+  - m_GUID: 768876ef01ca30043a665d0f8f9a5a29
+    m_Address: Button
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: d419044f4528c924c8246806ad0bfb4b
+    m_Address: Buy
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: 2d77a98d162c5ab45b0b5a457ec644fe
+    m_Address: Fail
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: 2fc58d986242aa845b0c76cfcba21fcc
+    m_Address: GameResume
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: d46fc59147b0a984db39e2091afb865b
+    m_Address: GameStop
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: 228a414c02aae104093ef692ae2bae7d
+    m_Address: Grow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: 1117d5f41aab9fd4bb7edf12579a2fa9
+    m_Address: Sell
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: b2339d42d71ef8646b214a6c12e95d54
+    m_Address: Touch
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: dc19f642807b5bc4faef18b20134d696
+    m_Address: Unlock
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 3c08af03f272c4d478dc9e3e756c1f7a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: ae510e99ca241be4a834465fe38b1ed4, type: 2}
+    - {fileID: 11400000, guid: e7a463fcef339a443b0d4837e3400586, type: 2}

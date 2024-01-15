@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Groundwork
+  m_EditorClassIdentifier: 
+  m_GroupName: Groundwork
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d9606657699e61b4989423ec3291ee68
+  m_SerializeEntries:
+  - m_GUID: c59da9dcd4b431344a48aefaaf205388
+    m_Address: Border
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b4fb343efaa1e4b44b0a34b61c4b4f32
+    m_Address: Reposition
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5c9cc2dc2032f1b4296a055fe8698ff2
+    m_Address: SoundController
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8516f6260ae881446b666ae7d6e38297
+    m_Address: Factory
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 3c08af03f272c4d478dc9e3e756c1f7a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 537e0248da19dbd428f695de5eae9da2, type: 2}
+    - {fileID: 11400000, guid: 0b4f07e8c6b1a79498f7c0aeefc472bb, type: 2}

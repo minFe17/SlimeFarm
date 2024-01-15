@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Slime
+  m_EditorClassIdentifier: 
+  m_GroupName: Slime
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 9dbb0429c5bb44042b64f8b915ee6b4c
+  m_SerializeEntries:
+  - m_GUID: 8fd34cfd3fb09c64cb2dca2f24c41c65
+    m_Address: Mummy Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 432e5a4fa9f97ce41b378faf99bcb3d1
+    m_Address: Robot Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ddf57bad3b75d1f419ee7c5e29578e19
+    m_Address: Rock Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 752af9e05573637449cc4ae159894880
+    m_Address: Worm Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: eb9bfcd495c0ab44eaceab52cb64aae6
+    m_Address: Devil Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f9173bbfa3507ea479d27ebb0d7b63af
+    m_Address: King Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4f791887ef8a424429fb806ebf3b6324
+    m_Address: Pudding Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a46abfbe5ad2c5d4db25e9a7d342ac04
+    m_Address: Earth Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6cc2567323949c049b028e9c7aad5a7f
+    m_Address: Jelly Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 56dd719a368398a419da14acace74c1f
+    m_Address: Unicorn Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 04a15f9da19d097488499c9408628261
+    m_Address: Art Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4b094d635e11e3246b3a55adcd2d7bed
+    m_Address: Angel Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 76b4bf0141ec22c43a1a3dcd7e24648a
+    m_Address: Sushi Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 49ca339b936ee7f40b8bc8b285a907cd
+    m_Address: Normal Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 53aa8df0564830244af6b34339d04f28
+    m_Address: Shark Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9b4740ae9a75d2341a9604975b7015f4
+    m_Address: Diamond Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0f510d83819dca94b9ffeb2fa427f480
+    m_Address: Bear Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2e58e620d6bb51445aee9ff817ed048b
+    m_Address: Cook Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 130def41d09961c448ded9e11bf7061c
+    m_Address: Level1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SlimeAnimator
+  - m_GUID: 8671d5566c01c6747b7cd6b09c8e349b
+    m_Address: Level2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SlimeAnimator
+  - m_GUID: 5063fc7dbd9a04144a3a3c673ecf9ef8
+    m_Address: Level3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SlimeAnimator
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 3c08af03f272c4d478dc9e3e756c1f7a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 0d79f53b6ac7ad84bbc88e069e6e4183, type: 2}
+    - {fileID: 11400000, guid: f23a742d27a626142a3ff5642feeab30, type: 2}
