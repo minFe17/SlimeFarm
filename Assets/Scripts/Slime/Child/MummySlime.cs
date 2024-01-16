@@ -4,7 +4,7 @@ public class MummySlime : Slime
     {
         base.Awake();
         _slimeType = ESlimeType.Mummy;
-        _slimeSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Mummy");
-        _shadowSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Shadow");
+        _slimeSprite.sprite = _spriteAtlas.GetSprite("Mummy");
+        _shadowSprite.sprite = _spriteAtlas.GetSprite("Shadow");
     }
 }

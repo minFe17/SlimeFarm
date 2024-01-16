@@ -4,7 +4,7 @@ public class SharkSlime : Slime
     {
         base.Awake();
         _slimeType = ESlimeType.Shark;
-        _slimeSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Shark");
-        _shadowSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Shadow");
+        _slimeSprite.sprite = _spriteAtlas.GetSprite("Shark");
+        _shadowSprite.sprite = _spriteAtlas.GetSprite("Shadow");
     }
 }

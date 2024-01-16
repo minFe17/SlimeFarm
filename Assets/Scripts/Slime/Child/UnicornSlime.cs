@@ -4,7 +4,7 @@ public class UnicornSlime : Slime
     {
         base.Awake();
         _slimeType = ESlimeType.Unicorn;
-        _slimeSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Unicorn");
-        _shadowSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Shadow");
+        _slimeSprite.sprite = _spriteAtlas.GetSprite("Unicorn");
+        _shadowSprite.sprite = _spriteAtlas.GetSprite("Shadow");
     }
 }

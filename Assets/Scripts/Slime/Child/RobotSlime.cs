@@ -4,7 +4,7 @@ public class RobotSlime : Slime
     {
         base.Awake();
         _slimeType = ESlimeType.Robot;
-        _slimeSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Robot");
-        _shadowSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Shadow");
+        _slimeSprite.sprite = _spriteAtlas.GetSprite("Robot");
+        _shadowSprite.sprite = _spriteAtlas.GetSprite("Shadow");
     }
 }

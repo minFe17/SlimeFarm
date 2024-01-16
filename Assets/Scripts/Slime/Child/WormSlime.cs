@@ -4,7 +4,7 @@ public class WormSlime : Slime
     {
         base.Awake();
         _slimeType = ESlimeType.Worm;
-        _slimeSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Worm");
-        _shadowSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Shadow");
+        _slimeSprite.sprite = _spriteAtlas.GetSprite("Worm");
+        _shadowSprite.sprite = _spriteAtlas.GetSprite("Shadow");
     }
 }

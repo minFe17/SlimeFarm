@@ -4,7 +4,7 @@ public class EarthSlime : Slime
     {
         base.Awake();
         _slimeType = ESlimeType.Earth;
-        _slimeSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Earth");
-        _shadowSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Shadow");
+        _slimeSprite.sprite = _spriteAtlas.GetSprite("Earth");
+        _shadowSprite.sprite = _spriteAtlas.GetSprite("Shadow");
     }
 }

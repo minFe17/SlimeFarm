@@ -30,11 +30,11 @@ public class PlantUI : MonoBehaviour
     GameManager _gameManager;
     SpriteAtlas _uiSprite;
 
-    void Start()
+    async void Start()
     {
         _plantManager = GenericSingleton<PlantManager>.Instance;
         _gameManager = GenericSingleton<GameManager>.Instance;
-        _uiSprite = GenericSingleton<SpriteManager>.Instance.UISprite;
+        _uiSprite = await GenericSingleton<SpriteManager>.Instance.GetUISprite();
         SetSprite();
         MaxSlimeChange();
         JamOutputChange();

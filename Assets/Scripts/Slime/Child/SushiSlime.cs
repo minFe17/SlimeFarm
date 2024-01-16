@@ -4,7 +4,7 @@ public class SushiSlime : Slime
     {
         base.Awake();
         _slimeType = ESlimeType.Sushi;
-        _slimeSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Sushi");
-        _shadowSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Shadow");
+        _slimeSprite.sprite = _spriteAtlas.GetSprite("Sushi");
+        _shadowSprite.sprite = _spriteAtlas.GetSprite("Shadow");
     }
 }

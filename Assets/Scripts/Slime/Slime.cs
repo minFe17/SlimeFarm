@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.U2D;
 using Utils;
 
 public class Slime : MonoBehaviour
@@ -8,7 +9,7 @@ public class Slime : MonoBehaviour
     [SerializeField] protected SpriteRenderer _shadowSprite;
 
     protected ESlimeType _slimeType;
-    protected SpriteManager _spriteManager;
+    protected SpriteAtlas _spriteAtlas;
 
     SlimeState _state;
     Animator _animator;
@@ -34,10 +35,10 @@ public class Slime : MonoBehaviour
     public float PickTime { set => _pickTime = value; }
     public bool IsSaveSlime { set => _isSaveSlime = value; }
 
-    protected virtual void Awake()
+    protected async virtual void Awake()
     {
         ChangeState(new IdleState());
-        _spriteManager = GenericSingleton<SpriteManager>.Instance;
+        _spriteAtlas = await GenericSingleton<SpriteManager>.Instance.GetSlimeSprite();
     }
 
     public void Init()

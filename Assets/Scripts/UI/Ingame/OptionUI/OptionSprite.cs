@@ -14,9 +14,9 @@ public class OptionSprite : MonoBehaviour
 
     SpriteAtlas _uiSprite;
 
-    void Start()
+    async void Start()
     {
-        _uiSprite = GenericSingleton<SpriteManager>.Instance.UISprite;
+        _uiSprite = await GenericSingleton<SpriteManager>.Instance.GetUISprite();
         SetSprite();
     }
 

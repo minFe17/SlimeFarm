@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 using Utils;
 
 public class Background : MonoBehaviour
@@ -12,19 +13,19 @@ public class Background : MonoBehaviour
     [Header("Cloud")]
     [SerializeField] List<SpriteRenderer> _clouds = new List<SpriteRenderer>();
 
-    SpriteManager _spriteManager;
+    SpriteAtlas _backgroundSprite;
 
-    void Start()
+    async void Start()
     {
-        _spriteManager = GenericSingleton<SpriteManager>.Instance;
+        _backgroundSprite = await GenericSingleton<SpriteManager>.Instance.GetBackgroundSprite();
         SettingBackground();
     }
 
     void SettingBackground()
     {
-        _room.sprite = _spriteManager.BackgroundSprite.GetSprite("Room");
-        _sky.sprite = _spriteManager.BackgroundSprite.GetSprite("Sky");
-        _shin.sprite = _spriteManager.BackgroundSprite.GetSprite("Shin");
+        _room.sprite = _backgroundSprite.GetSprite("Room");
+        _sky.sprite = _backgroundSprite.GetSprite("Sky");
+        _shin.sprite = _backgroundSprite.GetSprite("Shin");
         SettingCloud();
     }
 
@@ -33,8 +34,8 @@ public class Background : MonoBehaviour
         for (int i = 0; i < _clouds.Count; i++)
         {
             ECloudType cloud = (ECloudType)i;
-            _clouds[i].sprite = _spriteManager.BackgroundSprite.GetSprite(cloud.ToString());
-        }    
+            _clouds[i].sprite = _backgroundSprite.GetSprite(cloud.ToString());
+        }
     }
 }
 

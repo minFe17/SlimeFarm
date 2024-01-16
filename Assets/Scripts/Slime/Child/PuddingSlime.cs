@@ -4,7 +4,7 @@ public class PuddingSlime : Slime
     {
         base.Awake();
         _slimeType = ESlimeType.Pudding;
-        _slimeSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Pudding");
-        _shadowSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Shadow");
+        _slimeSprite.sprite = _spriteAtlas.GetSprite("Pudding");
+        _shadowSprite.sprite = _spriteAtlas.GetSprite("Shadow");
     }
 }

@@ -4,7 +4,7 @@ public class JellySlime : Slime
     {
         base.Awake();
         _slimeType = ESlimeType.Jelly;
-        _slimeSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Jelly");
-        _shadowSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Shadow");
+        _slimeSprite.sprite = _spriteAtlas.GetSprite("Jelly");
+        _shadowSprite.sprite = _spriteAtlas.GetSprite("Shadow");
     }
 }

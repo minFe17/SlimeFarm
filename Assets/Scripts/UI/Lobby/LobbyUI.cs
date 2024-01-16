@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 using Utils;
 
@@ -8,18 +9,18 @@ public class LobbyUI : MonoBehaviour
     [SerializeField] Image _slimeImage;
     [SerializeField] Image _bearSlimeImage;
 
-    SpriteManager _spriteManager;
+    SpriteAtlas _slimeSprite;
 
-    void Start()
+    async void Start()
     {
-        _spriteManager = GenericSingleton<SpriteManager>.Instance;
+        _slimeSprite = await GenericSingleton<SpriteManager>.Instance.GetSlimeSprite();
         SetSlimeImage();
     }
 
     void SetSlimeImage()
     {
-        _slimeImage.sprite = _spriteManager.SlimeSprite.GetSprite("Normal");
-        _bearSlimeImage.sprite = _spriteManager.SlimeSprite.GetSprite("Bear");
+        _slimeImage.sprite = _slimeSprite.GetSprite("Normal");
+        _bearSlimeImage.sprite = _slimeSprite.GetSprite("Bear");
     }
 
     public void GameStart()

@@ -23,13 +23,14 @@ public class BuySlimeSprite : MonoBehaviour
     [SerializeField] Button _leftPageButton;
     [SerializeField] Button _rightPageButton;
 
-    SpriteManager _spriteManager;
     SpriteAtlas _uiSprite;
+    SpriteAtlas _slimeSprite;
 
-    void Awake()
+    async void Awake()
     {
-        _spriteManager = GenericSingleton<SpriteManager>.Instance;
-        _uiSprite = _spriteManager.UISprite;
+        SpriteManager spriteManager = GenericSingleton<SpriteManager>.Instance;
+        _uiSprite = await spriteManager.GetUISprite();
+        _slimeSprite = await spriteManager.GetSlimeSprite();
         SetSprite();
     }
 
@@ -77,9 +78,7 @@ public class BuySlimeSprite : MonoBehaviour
     public void ChangeSlimeImage(SlimeData slimeData, ELockType lockType)
     {
         ESlimeType slimeType = (ESlimeType)slimeData.Index - 1;
-        _slimeImage[(int)lockType].sprite = _spriteManager.SlimeSprite.GetSprite(slimeType.ToString());
+        _slimeImage[(int)lockType].sprite = _slimeSprite.GetSprite(slimeType.ToString());
         _slimeImage[(int)lockType].SetNativeSize();
     }
-
-
 }

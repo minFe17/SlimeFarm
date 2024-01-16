@@ -4,7 +4,7 @@ public class KingSlime : Slime
     {
         base.Awake();
         _slimeType = ESlimeType.King;
-        _slimeSprite.sprite = _spriteManager.SlimeSprite.GetSprite("King");
-        _shadowSprite.sprite = _spriteManager.SlimeSprite.GetSprite("Shadow");
+        _slimeSprite.sprite = _spriteAtlas.GetSprite("King");
+        _shadowSprite.sprite = _spriteAtlas.GetSprite("Shadow");
     }
 }
