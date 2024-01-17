@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class SushiSlimeFactory : SlimeFactoryBase
 {
-    protected override void Init()
+    protected override async void Init()
     {
-        _slimePrefab = Resources.Load("Prefabs/Slime/Sushi Slime") as GameObject;
+        _slimePrefab = await _addressableManager.GetAddressableAsset<GameObject>("Sushi Slime");
         _factoryManager.AddFactorys(ESlimeType.Sushi, this);
     }
 

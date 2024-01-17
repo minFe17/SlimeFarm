@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
 using Utils;
 
 public class ReadData
 {
+    AddressableManager _addressableManager;
+
     bool CheckData(string filePath)
     {
         if (File.Exists(filePath))
@@ -146,9 +149,11 @@ public class ReadData
         }
     }
 
-    public void ReadSlimeInfoData(SlimeManager slimeManager)
+    public async void ReadSlimeInfoData(SlimeManager slimeManager)
     {
-        TextAsset slimeDatas = Resources.Load("Datas/SlimeInfoData") as TextAsset;
+        if (_addressableManager == null)
+            _addressableManager = GenericSingleton<AddressableManager>.Instance;
+        TextAsset slimeDatas = await _addressableManager.GetAddressableAsset<TextAsset>("SlimeInfoData");
         string[] data = BaseReadOnlyData(slimeDatas);
         for (int i = 1; i < data.Length; i++)
         {
@@ -167,9 +172,11 @@ public class ReadData
         }
     }
 
-    public void ReadPlantData(PlantManager plantManager)
+    public async void ReadPlantData(PlantManager plantManager)
     {
-        TextAsset plantDatas = Resources.Load("Datas/PlantLevelData") as TextAsset;
+        if (_addressableManager == null)
+            _addressableManager = GenericSingleton<AddressableManager>.Instance;
+        TextAsset plantDatas = await _addressableManager.GetAddressableAsset<TextAsset>("PlantLevelData");
         string[] data = BaseReadOnlyData(plantDatas);
 
         for (int i = 1; i < data.Length; i++)

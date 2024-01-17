@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class EarthSlimeFactory : SlimeFactoryBase
 {
-    protected override void Init()
+    protected override async void Init()
     {
-        _slimePrefab = Resources.Load("Prefabs/Slime/Earth Slime") as GameObject;
+        _slimePrefab = await _addressableManager.GetAddressableAsset<GameObject>("Earth Slime");
         _factoryManager.AddFactorys(ESlimeType.Earth, this);
     }
 

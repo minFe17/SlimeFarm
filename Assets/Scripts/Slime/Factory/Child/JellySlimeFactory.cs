@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class JellySlimeFactory : SlimeFactoryBase
 {
-    protected override void Init()
+    protected override async void Init()
     {
-        _slimePrefab = Resources.Load("Prefabs/Slime/Jelly Slime") as GameObject;
+        _slimePrefab = await _addressableManager.GetAddressableAsset<GameObject>("Jelly Slime");
         _factoryManager.AddFactorys(ESlimeType.Jelly, this);
     }
 

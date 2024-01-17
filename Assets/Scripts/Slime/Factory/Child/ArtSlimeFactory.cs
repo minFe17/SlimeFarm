@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class ArtSlimeFactory : SlimeFactoryBase
 {
-    protected override void Init()
+    protected override async void Init()
     {
-        _slimePrefab = Resources.Load("Prefabs/Slime/Art Slime") as GameObject;
+        _slimePrefab = await _addressableManager.GetAddressableAsset<GameObject>("Art Slime");
         _factoryManager.AddFactorys(ESlimeType.Art, this);
     }
 

@@ -17,7 +17,7 @@ public class AudioClipManager : MonoBehaviour
 
     public AudioClip BGM { get => _bgm; }
 
-    public async Task Init()
+    public async void Init()
     {
         _soundManager = GenericSingleton<SoundManager>.Instance;
         _addressableManager = GenericSingleton<AddressableManager>.Instance;

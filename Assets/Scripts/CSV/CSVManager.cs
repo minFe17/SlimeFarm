@@ -4,8 +4,8 @@ using Utils;
 public class CSVManager : MonoBehaviour
 {
     // ╫л╠шео
-    WriteData _writeData;
-    ReadData _readData;
+    WriteData _writeData = new WriteData();
+    ReadData _readData = new ReadData();
 
     SlimeManager _slimeManager;
     PlantManager _plantManager;
@@ -20,10 +20,9 @@ public class CSVManager : MonoBehaviour
 
     public void Init()
     {
-        _writeData = new WriteData();
-        _readData = new ReadData();
         SetManager();
         CreateDataPath();
+        ReadOnlyData();
     }
 
     void SetManager()
@@ -48,9 +47,14 @@ public class CSVManager : MonoBehaviour
         return Application.persistentDataPath + dataName;
     }
 
-    public void ReadSlimeData()
+    void ReadOnlyData()
     {
         _readData.ReadSlimeInfoData(_slimeManager);
+        _readData.ReadPlantData(_plantManager);
+    }
+
+    public void ReadSlimeData()
+    {
         _readData.ReadSlimeUnlockData(_slimeManager, _slimeUnlockDataPath);
         _readData.ReadSlimeData(_slimeManager, _slimeDataPath);
     }
@@ -58,7 +62,6 @@ public class CSVManager : MonoBehaviour
     public void ReadPlantData()
     {
         _readData.ReadPlantLevelData(_plantManager, _plantDataPath);
-        _readData.ReadPlantData(_plantManager);
     }
 
     public void ReadGameData()

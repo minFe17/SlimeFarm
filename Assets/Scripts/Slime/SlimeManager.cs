@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Utils;
 
@@ -26,7 +27,6 @@ public class SlimeManager : MonoBehaviour
         _slimeFactoryManager = GenericSingleton<SlimeFactoryManager>.Instance;
         _csvManager = GenericSingleton<CSVManager>.Instance;
         _audioClipManager = GenericSingleton<AudioClipManager>.Instance;
-        SetAnimatorController();
         SetSlimeData();
     }
 
@@ -34,13 +34,15 @@ public class SlimeManager : MonoBehaviour
     {
         _csvManager.ReadSlimeData();
     }
-
-    void SetAnimatorController()
+    
+    public async void LoadAnimatorControllerAsset()
     {
+        AddressableManager addressableManager = GenericSingleton<AddressableManager>.Instance;
         _levelAnimatorControllers = new RuntimeAnimatorController[3];
         for (int i = 0; i < _levelAnimatorControllers.Length; i++)
-            _levelAnimatorControllers[i] = Resources.Load($"Prefabs/Slime/Animator/Level{i + 1}") as RuntimeAnimatorController;
+            _levelAnimatorControllers[i] = await addressableManager.GetAddressableAsset<RuntimeAnimatorController>($"Level{i + 1}");
     }
+
 
     public void UnlockSlime(int index)
     {

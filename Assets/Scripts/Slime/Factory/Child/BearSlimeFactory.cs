@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class BearSlimeFactory : SlimeFactoryBase
 {
-    protected override void Init()
+    protected override async void Init()
     {
-        _slimePrefab = Resources.Load("Prefabs/Slime/Bear Slime") as GameObject;
+        _slimePrefab = await _addressableManager.GetAddressableAsset<GameObject>("Bear Slime");
         _factoryManager.AddFactorys(ESlimeType.Bear, this);
     }
 

@@ -1,20 +1,26 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using Utils;
 
 public class SlimeFactoryManager : MonoBehaviour
 {
     // ╫л╠шео
     Dictionary<ESlimeType, SlimeFactoryBase> _slimeFactorys = new Dictionary<ESlimeType, SlimeFactoryBase>();
 
-    public void Init()
+    GameObject _factoryPrefab;
+    AddressableManager _addressableManager;
+
+    public async void Init()
     {
+        _addressableManager = GenericSingleton<AddressableManager>.Instance;
+        _factoryPrefab = await _addressableManager.GetAddressableAsset<GameObject>("Factory");
         CreateFactory();
     }
 
     void CreateFactory()
     {
-        GameObject factory = Resources.Load("Prefabs/Factory") as GameObject;
-        Instantiate(factory);
+        Instantiate(_factoryPrefab, transform);
     }
 
     public void AddFactorys(ESlimeType key, SlimeFactoryBase value)

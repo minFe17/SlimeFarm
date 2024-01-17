@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class NormalSlimeFactory : SlimeFactoryBase
 {
-    protected override void Init()
+    protected override async void Init()
     {
-        _slimePrefab = Resources.Load("Prefabs/Slime/Normal Slime") as GameObject;
+        _slimePrefab = await _addressableManager.GetAddressableAsset<GameObject>("Normal Slime");
         _factoryManager.AddFactorys(ESlimeType.Normal, this);
     }
 

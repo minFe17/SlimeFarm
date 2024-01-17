@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class DiamondSlimeFactory : SlimeFactoryBase
 {
-    protected override void Init()
+    protected override async void Init()
     {
-        _slimePrefab = Resources.Load("Prefabs/Slime/Diamond Slime") as GameObject;
+        _slimePrefab = await _addressableManager.GetAddressableAsset<GameObject>("Diamond Slime");
         _factoryManager.AddFactorys(ESlimeType.Diamond, this);
     }
 

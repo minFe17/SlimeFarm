@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class AngelSlimeFactory : SlimeFactoryBase
 {
-    protected override void Init()
+    protected override async void Init()
     {
-        _slimePrefab = Resources.Load("Prefabs/Slime/Angel Slime") as GameObject;
+        _slimePrefab = await _addressableManager.GetAddressableAsset<GameObject>("Angel Slime");
         _factoryManager.AddFactorys(ESlimeType.Angel, this);
     }
 

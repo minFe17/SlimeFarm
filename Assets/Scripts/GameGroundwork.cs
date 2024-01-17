@@ -21,9 +21,8 @@ public class GameGroundwork : MonoBehaviour
 
     void Groundwork()
     {
-        GenericSingleton<SlimeFactoryManager>.Instance.Init();
         GenericSingleton<BorderManager>.Instance.CreateBoard(transform);
-        GenericSingleton<RepositionManager>.Instance.Init(transform);
+        GenericSingleton<RepositionManager>.Instance.CreateReposition(transform);
         CreateBackground();
         CreateCamera();
     }
@@ -43,7 +42,7 @@ public class GameGroundwork : MonoBehaviour
 
     void SetSound()
     {
-        GenericSingleton<SoundManager>.Instance.Init();
+        GenericSingleton<SoundManager>.Instance.CreateSoundController();
         AudioClipManager audioClipManager = GenericSingleton<AudioClipManager>.Instance;
         audioClipManager.PlayBGM();
     }

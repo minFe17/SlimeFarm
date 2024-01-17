@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class WormSlimeFactory : SlimeFactoryBase
 {
-    protected override void Init()
+    protected override async void Init()
     {
-        _slimePrefab = Resources.Load("Prefabs/Slime/Worm Slime") as GameObject;
+        _slimePrefab = await _addressableManager.GetAddressableAsset<GameObject>("Worm Slime");
         _factoryManager.AddFactorys(ESlimeType.Worm, this);
     }
 

@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class SharkSlimeFactory : SlimeFactoryBase
 {
-    protected override void Init()
+    protected override async void Init()
     {
-        _slimePrefab = Resources.Load("Prefabs/Slime/Shark Slime") as GameObject;
+        _slimePrefab = await _addressableManager.GetAddressableAsset<GameObject>("Shark Slime");
         _factoryManager.AddFactorys(ESlimeType.Shark, this);
     }
 
