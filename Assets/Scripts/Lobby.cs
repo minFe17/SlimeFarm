@@ -1,10 +1,10 @@
 using UnityEngine;
+using Utils;
 
 public class Lobby : MonoBehaviour
 {
-    [Header("Prefab")]
-    GameObject _backgroundPrefab;
-    GameObject _cameraPrefab;
+    BackgroundAsset _backgroundAsset;
+    CameraAsset _cameraAsset;
     GameObject _lobbyUIPrefab;
 
     void Start()
@@ -12,24 +12,27 @@ public class Lobby : MonoBehaviour
         Init();
     }
 
-    void Init()
+    async void Init()
     {
-        _backgroundPrefab = Resources.Load("Prefabs/Background") as GameObject;
-        _cameraPrefab = Resources.Load("Prefabs/Main Camera") as GameObject;
-        _lobbyUIPrefab = Resources.Load("Prefabs/UI/LobbyUI") as GameObject;
+        AddressableManager addressableManager = GenericSingleton<AddressableManager>.Instance;
+
+        _backgroundAsset = GenericSingleton<BackgroundAsset>.Instance;
+        _cameraAsset = GenericSingleton<CameraAsset>.Instance;
+        _lobbyUIPrefab = await addressableManager.GetAddressableAsset<GameObject>("LobbyUI");
         CreateBackground();
     }
 
-    void CreateBackground()
+    async void CreateBackground()
     {
-        Instantiate(_backgroundPrefab, transform);
+        await _backgroundAsset.Init();
+        _backgroundAsset.CreateBackground(transform);
         CreateCamera();
     }
 
-    void CreateCamera()
+    async void CreateCamera()
     {
-        GameObject temp = Instantiate(_cameraPrefab, transform);
-        Camera camera = temp.GetComponent<Camera>();
+        await _cameraAsset.Init();
+        Camera camera = _cameraAsset.CreateCamera(transform);
         CreateLobbyUI(camera);
     }
 

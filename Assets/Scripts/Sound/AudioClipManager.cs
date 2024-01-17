@@ -12,22 +12,24 @@ public class AudioClipManager : MonoBehaviour
     List<AudioClip> _sfxs = new List<AudioClip>();
 
     SoundManager _soundManager;
+    AddressableManager _addressableManager;
 
     public AudioClip BGM { get => _bgm; }
 
-    public void Init()
+    public async void Init()
     {
         _soundManager = GenericSingleton<SoundManager>.Instance;
-        _bgm = Resources.Load("Prefabs/AudioClip/BGM") as AudioClip;
+        _addressableManager = GenericSingleton<AddressableManager>.Instance;
+        _bgm = await _addressableManager.GetAddressableAsset<AudioClip>("BGM"); 
         SetSFX();
     }
 
-    void SetSFX()
+    async void SetSFX()
     {
         for (int i = 0; i < (int)ESFXSoundType.Max; i++)
         {
             string audioSoundName = ((ESFXSoundType)i).ToString();
-            AudioClip audioSound = Resources.Load($"Prefabs/AudioClip/SFX/{audioSoundName}") as AudioClip;
+            AudioClip audioSound = await _addressableManager.GetAddressableAsset<AudioClip>(audioSoundName);
             _sfxs.Add(audioSound);
         }
     }

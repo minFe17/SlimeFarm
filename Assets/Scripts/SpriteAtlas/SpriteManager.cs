@@ -1,21 +1,24 @@
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.U2D;
+using Utils;
 
 public class SpriteManager : MonoBehaviour
 {
     // ╫л╠шео
-    SpriteAtlasBase _spriteAtlasBase;
+    AddressableManager _addreesableManager;
     SpriteAtlas _backgroundSprite;
     SpriteAtlas _slimeSprite;
     SpriteAtlas _uiSprite;
+
 
     public async Task<SpriteAtlas> GetSlimeSprite()
     {
         if (_slimeSprite == null)
         {
-            _spriteAtlasBase = new SlimeSprite();
-            _slimeSprite = await _spriteAtlasBase.GetSpriteAtlas();
+            if (_addreesableManager == null)
+                _addreesableManager = GenericSingleton<AddressableManager>.Instance;
+            _slimeSprite = await _addreesableManager.GetAddressableAsset<SpriteAtlas>("SlimeSprite");
         }
         return _slimeSprite;
     }
@@ -24,8 +27,9 @@ public class SpriteManager : MonoBehaviour
     {
         if (_uiSprite == null)
         {
-            _spriteAtlasBase = new UISprite();
-            _uiSprite = await _spriteAtlasBase.GetSpriteAtlas();
+            if (_addreesableManager == null)
+                _addreesableManager = GenericSingleton<AddressableManager>.Instance;
+            _uiSprite = await _addreesableManager.GetAddressableAsset<SpriteAtlas>("UISprites");
         }
         return _uiSprite;
     }
@@ -34,8 +38,9 @@ public class SpriteManager : MonoBehaviour
     {
         if (_backgroundSprite == null)
         {
-            _spriteAtlasBase = new BackgroundSprite();
-            _backgroundSprite = await _spriteAtlasBase.GetSpriteAtlas();
+            if (_addreesableManager == null)
+                _addreesableManager = GenericSingleton<AddressableManager>.Instance;
+            _backgroundSprite = await _addreesableManager.GetAddressableAsset<SpriteAtlas>("BackgroundSprite");
         }
         return _backgroundSprite;
     }
