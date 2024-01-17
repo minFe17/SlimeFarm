@@ -35,6 +35,6 @@ public class AddressableManager : MonoBehaviour
 
     public void Release<T>(T target)
     {
-        Addressables.Release<T>(target);
+        Addressables.Release(target);
     }
 }

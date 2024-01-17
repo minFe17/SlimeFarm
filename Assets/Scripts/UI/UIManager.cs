@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
     GameObject _uiPrefab;
     GameObject _lobbyUIPrefab;
 
+    AddressableManager _addressableManager;
+
     public UI UI { get; set; }
     public CapitalUI CapitalUI { get; set; }
     public SellUI SellUI { get; set; }
@@ -15,9 +17,9 @@ public class UIManager : MonoBehaviour
 
     public async Task Init()
     {
-        AddressableManager addressableManager = GenericSingleton<AddressableManager>.Instance;
-        _uiPrefab = await addressableManager.GetAddressableAsset<GameObject>("IngameUI");
-        _lobbyUIPrefab = await addressableManager.GetAddressableAsset<GameObject>("LobbyUI");
+        _addressableManager = GenericSingleton<AddressableManager>.Instance;
+        _uiPrefab = await _addressableManager.GetAddressableAsset<GameObject>("IngameUI");
+        _lobbyUIPrefab = await _addressableManager.GetAddressableAsset<GameObject>("LobbyUI");
     }
 
     public void CreateUI(Camera mainCamera)
@@ -30,5 +32,10 @@ public class UIManager : MonoBehaviour
     {
         GameObject temp = Instantiate(_lobbyUIPrefab, parent);
         temp.GetComponent<Canvas>().worldCamera = camera;
+    }
+
+    public void ReleaseLobbyUI()
+    {
+        _addressableManager.Release<GameObject>(_lobbyUIPrefab);
     }
 }

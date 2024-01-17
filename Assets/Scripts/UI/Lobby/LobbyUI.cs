@@ -25,6 +25,7 @@ public class LobbyUI : MonoBehaviour
 
     public void GameStart()
     {
+        GenericSingleton<UIManager>.Instance.ReleaseLobbyUI();
         SceneManager.LoadScene("IngameScene");
     }
 }

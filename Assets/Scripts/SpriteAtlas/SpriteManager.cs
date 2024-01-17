@@ -1,12 +1,13 @@
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.U2D;
+using UnityEngine.UIElements;
 using Utils;
 
 public class SpriteManager : MonoBehaviour
 {
     // ╫л╠шео
-    AddressableManager _addreesableManager;
+    AddressableManager _addressableManager;
     SpriteAtlas _slimeSprite;
     SpriteAtlas _uiSprite;
     SpriteAtlas _backgroundSprite;
@@ -24,8 +25,8 @@ public class SpriteManager : MonoBehaviour
 
     async Task<SpriteAtlas> LoadAsset(string address)
     {
-        if (_addreesableManager == null)
-            _addreesableManager = GenericSingleton<AddressableManager>.Instance;
-        return await _addreesableManager.GetAddressableAsset<SpriteAtlas>(address);
+        if (_addressableManager == null)
+            _addressableManager = GenericSingleton<AddressableManager>.Instance;
+        return await _addressableManager.GetAddressableAsset<SpriteAtlas>(address);
     }
 }
