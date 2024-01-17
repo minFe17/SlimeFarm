@@ -11,9 +11,9 @@ public class LobbyUI : MonoBehaviour
 
     SpriteAtlas _slimeSprite;
 
-    async void Start()
+    void Start()
     {
-        _slimeSprite = await GenericSingleton<SpriteManager>.Instance.GetSlimeSprite();
+        _slimeSprite = GenericSingleton<SpriteManager>.Instance.SlimeSprite;
         SetSlimeImage();
     }
 

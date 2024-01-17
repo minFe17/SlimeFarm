@@ -30,24 +30,21 @@ public class GameGroundwork : MonoBehaviour
 
     void CreateBackground()
     {
-        GameObject backgroundPrefab = Resources.Load("Prefabs/Background") as GameObject;
-        Instantiate(backgroundPrefab, transform);
+        BackgroundAsset backgroundAsset = GenericSingleton<BackgroundAsset>.Instance;
+        backgroundAsset.CreateBackground(transform);
     }
 
     void CreateCamera()
     {
-        GameObject cameraPrefab = Resources.Load("Prefabs/Main Camera") as GameObject;
-        GameObject temp = Instantiate(cameraPrefab, transform);
-        Camera mainCamera = temp.GetComponent<Camera>();
-
-        GenericSingleton<UIManager>.Instance.CreateUI(mainCamera);
+        CameraAsset cameraAsset = GenericSingleton<CameraAsset>.Instance;
+        Camera camera = cameraAsset.CreateCamera(transform);
+        GenericSingleton<UIManager>.Instance.CreateUI(camera);
     }
 
     void SetSound()
     {
         GenericSingleton<SoundManager>.Instance.Init();
         AudioClipManager audioClipManager = GenericSingleton<AudioClipManager>.Instance;
-        audioClipManager.Init();
         audioClipManager.PlayBGM();
     }
 }

@@ -16,9 +16,9 @@ public class SellUI : MonoBehaviour
 
     public bool IsSell { get =>_isSell; }
 
-    async void Awake()
+    void Awake()
     {
-        _uiSprite = await GenericSingleton<SpriteManager>.Instance.GetUISprite();
+        _uiSprite = GenericSingleton<SpriteManager>.Instance.UISprite;
         SetSprite();
     }
 

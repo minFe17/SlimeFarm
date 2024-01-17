@@ -35,10 +35,10 @@ public class Slime : MonoBehaviour
     public float PickTime { set => _pickTime = value; }
     public bool IsSaveSlime { set => _isSaveSlime = value; }
 
-    protected async virtual void Awake()
+    protected virtual void Awake()
     {
         ChangeState(new IdleState());
-        _spriteAtlas = await GenericSingleton<SpriteManager>.Instance.GetSlimeSprite();
+        _spriteAtlas = GenericSingleton<SpriteManager>.Instance.SlimeSprite;
     }
 
     public void Init()

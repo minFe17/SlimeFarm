@@ -15,9 +15,9 @@ public class Background : MonoBehaviour
 
     SpriteAtlas _backgroundSprite;
 
-    async void Start()
+    void Start()
     {
-        _backgroundSprite = await GenericSingleton<SpriteManager>.Instance.GetBackgroundSprite();
+        _backgroundSprite = GenericSingleton<SpriteManager>.Instance.BackgroundSprite;
         SettingBackground();
     }
 

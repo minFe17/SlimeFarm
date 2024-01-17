@@ -26,12 +26,12 @@ public class BuyUIButton : MonoBehaviour
     Sprite _offSprite;
     bool _isClick;
 
-    async void Start()
+    void Start()
     {
         _button = GetComponent<Button>();
         _image = GetComponent<Image>();
         _audioClipManager = GenericSingleton<AudioClipManager>.Instance;
-        _uiSprite = await GenericSingleton<SpriteManager>.Instance.GetUISprite();
+        _uiSprite = GenericSingleton<SpriteManager>.Instance.UISprite;
         SetSprite();
     }
 

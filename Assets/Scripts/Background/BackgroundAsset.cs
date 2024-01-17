@@ -5,7 +5,6 @@ using Utils;
 public class BackgroundAsset : MonoBehaviour
 {
     // ╫л╠шео
-
     AddressableManager _addressableManager;
     GameObject _background;
 

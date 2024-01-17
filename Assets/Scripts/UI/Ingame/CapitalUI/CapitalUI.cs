@@ -23,10 +23,10 @@ public class CapitalUI : MonoBehaviour
     float _uiJam;
     float _uiGold;
 
-    async void Start()
+    void Start()
     {
         _gameManager = GenericSingleton<GameManager>.Instance;
-        _uiSprite = await GenericSingleton<SpriteManager>.Instance.GetUISprite();
+        _uiSprite = GenericSingleton<SpriteManager>.Instance.UISprite;
         SetSprite();
     }
 

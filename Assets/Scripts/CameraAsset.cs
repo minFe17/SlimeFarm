@@ -16,7 +16,7 @@ public class CameraAsset : MonoBehaviour
 
     public Camera CreateCamera(Transform parent)
     {
-        GameObject temp = Instantiate(_camera, transform);
+        GameObject temp = Instantiate(_camera, parent);
         Camera camera = temp.GetComponent<Camera>();
         return camera;
     }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Utils;
 
@@ -16,7 +17,7 @@ public class AudioClipManager : MonoBehaviour
 
     public AudioClip BGM { get => _bgm; }
 
-    public async void Init()
+    public async Task Init()
     {
         _soundManager = GenericSingleton<SoundManager>.Instance;
         _addressableManager = GenericSingleton<AddressableManager>.Instance;

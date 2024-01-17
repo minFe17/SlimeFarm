@@ -13,9 +13,9 @@ public class BuyUI : MonoBehaviour
 
     SpriteAtlas _uiSprite;
 
-    async void Awake()
+    void Awake()
     {
-        _uiSprite = await GenericSingleton<SpriteManager>.Instance.GetUISprite();
+        _uiSprite = GenericSingleton<SpriteManager>.Instance.UISprite;
         SetSprite();
     }
 

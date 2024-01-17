@@ -26,11 +26,11 @@ public class BuySlimeSprite : MonoBehaviour
     SpriteAtlas _uiSprite;
     SpriteAtlas _slimeSprite;
 
-    async void Awake()
+    void Awake()
     {
         SpriteManager spriteManager = GenericSingleton<SpriteManager>.Instance;
-        _uiSprite = await spriteManager.GetUISprite();
-        _slimeSprite = await spriteManager.GetSlimeSprite();
+        _uiSprite = spriteManager.UISprite;
+        _slimeSprite = spriteManager.SlimeSprite;
         SetSprite();
     }
 

@@ -7,41 +7,25 @@ public class SpriteManager : MonoBehaviour
 {
     // ╫л╠шео
     AddressableManager _addreesableManager;
-    SpriteAtlas _backgroundSprite;
     SpriteAtlas _slimeSprite;
     SpriteAtlas _uiSprite;
+    SpriteAtlas _backgroundSprite;
 
+    public SpriteAtlas SlimeSprite { get => _slimeSprite; }
+    public SpriteAtlas UISprite { get => _uiSprite; }
+    public SpriteAtlas BackgroundSprite { get => _backgroundSprite; }
 
-    public async Task<SpriteAtlas> GetSlimeSprite()
+    public async Task Init()
     {
-        if (_slimeSprite == null)
-        {
-            if (_addreesableManager == null)
-                _addreesableManager = GenericSingleton<AddressableManager>.Instance;
-            _slimeSprite = await _addreesableManager.GetAddressableAsset<SpriteAtlas>("SlimeSprite");
-        }
-        return _slimeSprite;
+        _slimeSprite = await LoadAsset("SlimeSprite");
+        _uiSprite = await LoadAsset("UISprite");
+        _backgroundSprite = await LoadAsset("BackgroundSprite");
     }
 
-    public async Task<SpriteAtlas> GetUISprite()
+    async Task<SpriteAtlas> LoadAsset(string address)
     {
-        if (_uiSprite == null)
-        {
-            if (_addreesableManager == null)
-                _addreesableManager = GenericSingleton<AddressableManager>.Instance;
-            _uiSprite = await _addreesableManager.GetAddressableAsset<SpriteAtlas>("UISprites");
-        }
-        return _uiSprite;
-    }
-
-    public async Task<SpriteAtlas> GetBackgroundSprite()
-    {
-        if (_backgroundSprite == null)
-        {
-            if (_addreesableManager == null)
-                _addreesableManager = GenericSingleton<AddressableManager>.Instance;
-            _backgroundSprite = await _addreesableManager.GetAddressableAsset<SpriteAtlas>("BackgroundSprite");
-        }
-        return _backgroundSprite;
+        if (_addreesableManager == null)
+            _addreesableManager = GenericSingleton<AddressableManager>.Instance;
+        return await _addreesableManager.GetAddressableAsset<SpriteAtlas>(address);
     }
 }

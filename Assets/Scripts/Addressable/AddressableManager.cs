@@ -7,16 +7,15 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class AddressableManager : MonoBehaviour
 {
     // ╫л╠шео
+    void LoadAsset<T>(string address, Action<T> callback)
+    {
+        Addressables.LoadAssetAsync<T>(address).Completed += handle => OnLoadDone(handle, callback);
+    }
 
     void OnLoadDone<T>(AsyncOperationHandle<T> handle, Action<T> callback)
     {
         if (handle.Status == AsyncOperationStatus.Succeeded)
             callback.Invoke(handle.Result);
-    }
-
-    void LoadAsset<T>(string address, Action<T> callback)
-    {
-        Addressables.LoadAssetAsync<T>(address).Completed += handle => OnLoadDone(handle, callback);
     }
 
     Task LoadAssetAsync<T>(string address, TaskCompletionSource<T> completionSource)

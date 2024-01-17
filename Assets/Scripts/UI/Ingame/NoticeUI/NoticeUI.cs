@@ -24,9 +24,9 @@ public class NoticeUI : MonoBehaviour
 
     bool _isShow;
 
-    async void Start()
+    void Start()
     {
-        _uiSprite = await GenericSingleton<SpriteManager>.Instance.GetUISprite();
+        _uiSprite = GenericSingleton<SpriteManager>.Instance.UISprite;
         _rectTransform = GetComponent<RectTransform>();
         _showPosition = new Vector2(0, -3);
         _hidePosition = _rectTransform.anchoredPosition;

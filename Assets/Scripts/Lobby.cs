@@ -3,10 +3,6 @@ using Utils;
 
 public class Lobby : MonoBehaviour
 {
-    BackgroundAsset _backgroundAsset;
-    CameraAsset _cameraAsset;
-    GameObject _lobbyUIPrefab;
-
     void Start()
     {
         Init();
@@ -14,31 +10,27 @@ public class Lobby : MonoBehaviour
 
     async void Init()
     {
-        AddressableManager addressableManager = GenericSingleton<AddressableManager>.Instance;
-
-        _backgroundAsset = GenericSingleton<BackgroundAsset>.Instance;
-        _cameraAsset = GenericSingleton<CameraAsset>.Instance;
-        _lobbyUIPrefab = await addressableManager.GetAddressableAsset<GameObject>("LobbyUI");
+        await GenericSingleton<LoadAsset>.Instance.Init();
         CreateBackground();
     }
 
-    async void CreateBackground()
+    void CreateBackground()
     {
-        await _backgroundAsset.Init();
-        _backgroundAsset.CreateBackground(transform);
+        BackgroundAsset backgroundAsset =  GenericSingleton<BackgroundAsset>.Instance;
+        backgroundAsset.CreateBackground(transform);
         CreateCamera();
     }
 
-    async void CreateCamera()
+    void CreateCamera()
     {
-        await _cameraAsset.Init();
-        Camera camera = _cameraAsset.CreateCamera(transform);
+        CameraAsset cameraAsset = GenericSingleton<CameraAsset>.Instance;
+        Camera camera = cameraAsset.CreateCamera(transform);
         CreateLobbyUI(camera);
     }
 
     void CreateLobbyUI(Camera camera)
     {
-        GameObject temp = Instantiate(_lobbyUIPrefab, transform);
-        temp.GetComponent<Canvas>().worldCamera = camera;
+        UIManager uiManager = GenericSingleton<UIManager>.Instance;
+        uiManager.CreateLobbyUI(camera, transform);
     }
 }
