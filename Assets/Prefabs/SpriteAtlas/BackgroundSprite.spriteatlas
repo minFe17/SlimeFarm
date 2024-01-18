@@ -60,9 +60,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2a3e647e5c95f5b489dd13d662a7e317, type: 2}
   - {fileID: 21300000, guid: bd74a42ffe340294995b82303bac33cc, type: 2}
   m_PackedSpriteNamesToIndex:
-  - Cloud B
+  - CloudB
   - Shin
-  - Cloud A
+  - CloudA
   - Sky
   - Room
   m_RenderDataMap: {}
