@@ -37,13 +37,21 @@ public class Slime : MonoBehaviour
 
     protected virtual void Awake()
     {
-        ChangeState(new IdleState());
         _spriteAtlas = GenericSingleton<SpriteManager>.Instance.SlimeSprite;
+    }
+
+    private void OnEnable()
+    {
+        Init();
     }
 
     public void Init()
     {
         _animator = GetComponent<Animator>();
+        gameObject.transform.parent = null;
+        gameObject.SetActive(true);
+        ChangeState(new IdleState());
+
         SetManager();
         CheckLevel();
     }
@@ -98,6 +106,7 @@ public class Slime : MonoBehaviour
         if (!_isSaveSlime)
         {
             _level = 1;
+            _exp = 0f;
         }
         _needExp = _level * 100;
         ChangeLevelAnimator();
@@ -138,7 +147,8 @@ public class Slime : MonoBehaviour
         int price = _slimeManager.SlimeDatas[(int)_slimeType].Gold;
         _gameManager.AddGold(_level * price);
         _slimeManager.SellSlime(this);
-        Destroy(this.gameObject);
+        _isSaveSlime = false;
+        GenericSingleton<ObjectPool>.Instance.PullSlime(this);
     }
 
     public void ChangeState(SlimeState state)
