@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.U2D;
-using UnityEngine.UIElements;
 using Utils;
 
 public class SpriteManager : MonoBehaviour

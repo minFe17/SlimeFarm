@@ -5,7 +5,6 @@ using Utils;
 public class LoadAsset : MonoBehaviour
 {
     // ╫л╠шео
-
     public async Task Init()
     {
         await LoadLobbyAsset();
