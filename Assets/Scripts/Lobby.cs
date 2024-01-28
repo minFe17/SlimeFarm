@@ -3,6 +3,7 @@ using Utils;
 
 public class Lobby : MonoBehaviour
 {
+    [SerializeField] Camera _camera;
     void Start()
     {
         Init();
@@ -11,21 +12,7 @@ public class Lobby : MonoBehaviour
     async void Init()
     {
         await GenericSingleton<LoadAsset>.Instance.Init();
-        CreateBackground();
-    }
-
-    void CreateBackground()
-    {
-        BackgroundAsset backgroundAsset =  GenericSingleton<BackgroundAsset>.Instance;
-        backgroundAsset.CreateBackground(transform);
-        CreateCamera();
-    }
-
-    void CreateCamera()
-    {
-        CameraAsset cameraAsset = GenericSingleton<CameraAsset>.Instance;
-        Camera camera = cameraAsset.CreateCamera(transform);
-        CreateLobbyUI(camera);
+        CreateLobbyUI(_camera);
     }
 
     void CreateLobbyUI(Camera camera)
