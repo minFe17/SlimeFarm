@@ -1,3 +1,4 @@
+using System.Text;
 using UnityEngine;
 using Utils;
 
@@ -11,6 +12,8 @@ public class CSVManager : MonoBehaviour
     PlantManager _plantManager;
     GameManager _gameManager;
     SoundManager _soundManager;
+
+    StringBuilder _stringBuilder;
 
     string _slimeDataPath;
     string _slimeUnlockDataPath;
@@ -35,16 +38,21 @@ public class CSVManager : MonoBehaviour
 
     void CreateDataPath()
     {
-        _slimeDataPath = CreateDataPath("SlimeData.csv");
-        _slimeUnlockDataPath = CreateDataPath("SlimeUnlockData.csv");
-        _plantDataPath = CreateDataPath("PlantData.csv");
-        _gameDataPath = CreateDataPath("GameData.csv");
-        _soundDataPath = CreateDataPath("SoundData.csv");
+        if (_stringBuilder == null)
+            _stringBuilder = new StringBuilder();
+        CreateDataPath(out _slimeDataPath, "SlimeData.csv");
+        CreateDataPath(out _slimeUnlockDataPath, "SlimeUnlockData.csv");
+        CreateDataPath(out _plantDataPath, "PlantData.csv");
+        CreateDataPath(out _gameDataPath, "GameData.csv");
+        CreateDataPath(out _soundDataPath, "SoundData.csv");
     }
 
-    string CreateDataPath(string dataName)
+    void CreateDataPath(out string path, string dataName)
     {
-        return Application.persistentDataPath + dataName;
+        _stringBuilder.Clear();
+        _stringBuilder.Append(Application.persistentDataPath);
+        _stringBuilder.Append(dataName);
+        path = _stringBuilder.ToString();
     }
 
     void ReadOnlyData()
