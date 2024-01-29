@@ -8,6 +8,10 @@ public class ReadData
 {
     AddressableManager _addressableManager;
 
+    SlimeData _slimeData;
+    MaxSlimeData _maxSlimeData;
+    JamOutputData _jamOutputData;
+
     bool CheckData(string filePath)
     {
         if (File.Exists(filePath))
@@ -15,37 +19,35 @@ public class ReadData
         return false;
     }
 
-    string[] BaseReadData(string path)
+    void BaseReadData(out string[] data, string path)
     {
         if (!CheckData(path))
-            return null;
+            data = null;
         else
         {
             using (StreamReader streamReader = new StreamReader(path))
             {
-                List<string> data = new List<string>();
+                List<string>dataList = new List<string>();
 
                 while (!streamReader.EndOfStream)
                 {
                     string line = streamReader.ReadLine();
-                    data.Add(line);
+                    dataList.Add(line);
                 }
-                return data.ToArray();
+                data = dataList.ToArray();
             }
         }
     }
 
-    string[] BaseReadOnlyData(TextAsset readData)
+    void BaseReadOnlyData(out string[] data, TextAsset readData)
     {
-        string[] data = null;
         using (StringReader stringReader = new StringReader(readData.text))
         {
             string baseData = stringReader.ReadToEnd();
             data = baseData.Split("\r\n");
         }
         if (data.Length < 2)
-            return null;
-        return data;
+            data = null;
     }
 
     Slime CreateSaveSlime(string[] value)
@@ -64,7 +66,8 @@ public class ReadData
 
     public void ReadSlimeData(SlimeManager slimeManager, string dataPath)
     {
-        string[] data = BaseReadData(dataPath);
+        string[] data;
+        BaseReadData(out data, dataPath);
         if (data != null)
         {
             for (int i = 1; i < data.Length; i++)
@@ -83,7 +86,8 @@ public class ReadData
 
     public void ReadSlimeUnlockData(SlimeManager slimeManager, string dataPath)
     {
-        string[] data = BaseReadData(dataPath);
+        string[] data;
+        BaseReadData(out data, dataPath);
         for (int i = 0; i < slimeManager.SlimeDatas.Count; i++)
             slimeManager.SlimeUnlocks.Add(false);
 
@@ -99,7 +103,8 @@ public class ReadData
 
     public void ReadPlantLevelData(PlantManager plantManager, string dataPath)
     {
-        string[] data = BaseReadData(dataPath);
+        string[] data;
+        BaseReadData(out data, dataPath);
         if (data != null)
         {
             var values = data[1].Split(",");
@@ -116,7 +121,8 @@ public class ReadData
 
     public void ReadGameData(GameManager gameManager, string dataPath)
     {
-        string[] data = BaseReadData(dataPath);
+        string[] data;
+        BaseReadData(out data, dataPath);
         if (data != null)
         {
             var values = data[1].Split(",");
@@ -133,7 +139,8 @@ public class ReadData
 
     public void ReadSoundData(SoundManager soundManager, string dataPath)
     {
-        string[] data = BaseReadData(dataPath);
+        string[] data;
+        BaseReadData(out data, dataPath);
         if (data != null)
         {
             var values = data[1].Split(",");
@@ -153,21 +160,20 @@ public class ReadData
         if (_addressableManager == null)
             _addressableManager = GenericSingleton<AddressableManager>.Instance;
         TextAsset slimeDatas = await _addressableManager.GetAddressableAsset<TextAsset>("SlimeInfoData");
-        string[] data = BaseReadOnlyData(slimeDatas);
+        string[] data;
+        BaseReadOnlyData(out data, slimeDatas);
         for (int i = 1; i < data.Length; i++)
         {
             var values = data[i].Split(",");
             if (values.Length == 0 || string.IsNullOrEmpty(values[0]))
                 continue;
 
-            SlimeData temp = new SlimeData();
+            _slimeData.Index = int.Parse(values[0]);
+            _slimeData.Name = $"{values[1]} 슬라임";
+            _slimeData.Jam = int.Parse(values[2]);
+            _slimeData.Gold = int.Parse(values[3]);
 
-            temp.Index = int.Parse(values[0]);
-            temp.Name = $"{values[1]} 슬라임";
-            temp.Jam = int.Parse(values[2]);
-            temp.Gold = int.Parse(values[3]);
-
-            slimeManager.SlimeDatas.Add(temp);
+            slimeManager.SlimeDatas.Add(_slimeData);
         }
     }
 
@@ -176,7 +182,8 @@ public class ReadData
         if (_addressableManager == null)
             _addressableManager = GenericSingleton<AddressableManager>.Instance;
         TextAsset plantDatas = await _addressableManager.GetAddressableAsset<TextAsset>("PlantLevelData");
-        string[] data = BaseReadOnlyData(plantDatas);
+        string[] data;
+        BaseReadOnlyData(out data, plantDatas);
 
         for (int i = 1; i < data.Length; i++)
         {
@@ -184,17 +191,14 @@ public class ReadData
             if (values.Length == 0 || string.IsNullOrEmpty(values[0]))
                 continue;
 
-            MaxSlimeData maxSlimeData = new MaxSlimeData();
-            JamOutputData jamOutputData = new JamOutputData();
+            _maxSlimeData.MaxSlime = int.Parse(values[1]);
+            _maxSlimeData.MaxSlimeGold = int.Parse(values[2]);
 
-            maxSlimeData.MaxSlime = int.Parse(values[1]);
-            maxSlimeData.MaxSlimeGold = int.Parse(values[2]);
+            _jamOutputData.JamOutput = int.Parse(values[3]);
+            _jamOutputData.JamOutputGold = int.Parse(values[4]);
 
-            jamOutputData.JamOutput = int.Parse(values[3]);
-            jamOutputData.JamOutputGold = int.Parse(values[4]);
-
-            plantManager.MaxSlimeDatas.Add(maxSlimeData);
-            plantManager.JamOutputDatas.Add(jamOutputData);
+            plantManager.MaxSlimeDatas.Add(_maxSlimeData);
+            plantManager.JamOutputDatas.Add(_jamOutputData);
         }
     }
 }

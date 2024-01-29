@@ -11,7 +11,7 @@ public class Background : MonoBehaviour
     [SerializeField] SpriteRenderer _shin;
 
     [Header("Cloud")]
-    [SerializeField] List<SpriteRenderer> _clouds = new List<SpriteRenderer>();
+    [SerializeField] List<SpriteRenderer> _clouds;
 
     SpriteAtlas _backgroundSprite;
 

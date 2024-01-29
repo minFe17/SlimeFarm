@@ -4,97 +4,105 @@ using System.Text;
 
 public class WriteData
 {
-    void BaseWriteData(List<string[]> datas, string dataPath)
+    List<string[]> _datas = new List<string[]>();
+    List<string> _valueList = new List<string>();
+    StringBuilder _stringBuilder;
+
+    void BaseWriteData(string dataPath)
     {
         string delimiter = ",";
-        string[][] outputs = datas.ToArray();
+        string[][] outputs = _datas.ToArray();
 
-        StringBuilder stringBuilder = new StringBuilder();
+        if (_stringBuilder == null)
+            _stringBuilder = new StringBuilder();
+        _stringBuilder.Clear();
         for (int i = 0; i < outputs.Length; i++)
         {
-            stringBuilder.AppendLine(string.Join(delimiter, outputs[i]));
+            _stringBuilder.AppendLine(string.Join(delimiter, outputs[i]));
         }
         using (StreamWriter outStream = File.CreateText(dataPath))
-            outStream.Write(stringBuilder);
+            outStream.Write(_stringBuilder);
     }
 
-    string[] AddSlimeData(int index, Slime slime)
+    void AddSlimeData(out string[] value, int index, Slime slime)
     {
-        List<string> value = new List<string>();
-        value.Add((index + 1).ToString());
-        value.Add(slime.SlimeType.ToString());
-        value.Add(slime.Level.ToString());
-        value.Add(slime.EXP.ToString());
-        value.Add((slime.transform.position.x).ToString());
-        value.Add((slime.transform.position.y).ToString());
-        value.Add((slime.transform.position.z).ToString());
+        _valueList.Clear();
 
-        return value.ToArray();
+        _valueList.Add((index + 1).ToString());
+        _valueList.Add(slime.SlimeType.ToString());
+        _valueList.Add(slime.Level.ToString());
+        _valueList.Add(slime.EXP.ToString());
+        _valueList.Add((slime.transform.position.x).ToString());
+        _valueList.Add((slime.transform.position.y).ToString());
+        _valueList.Add((slime.transform.position.z).ToString());
+
+        value = _valueList.ToArray();
     }
 
     public void WriteSlimeData(SlimeManager slimeManager, string dataPath)
     {
-        List<string[]> datas = new List<string[]>();
+        _datas.Clear();
         List<Slime> slimes = slimeManager.Slimes;
-        string[] header = new string[] { "Index", "SlimeType", "Level", "EXP", "PositonX", "PostionY", "PositionZ" };
-        datas.Add(header);
+        string[] header = { "Index", "SlimeType", "Level", "EXP", "PositonX", "PostionY", "PositionZ" };
+        _datas.Add(header);
         for (int i = 0; i < slimes.Count; i++)
         {
-            string[] data = AddSlimeData(i, slimes[i]);
-            datas.Add(data);
+            string[] data;
+            AddSlimeData(out data, i, slimes[i]);
+            _datas.Add(data);
         }
 
-        BaseWriteData(datas, dataPath);
+        BaseWriteData(dataPath);
     }
 
     public void WriteSlimeUnlockData(SlimeManager slimeManager, string dataPath)
     {
-        List<string[]> datas = new List<string[]>();
+        _datas.Clear();
 
-        string[] header = new string[] { "Index", "Unlock" };
-        datas.Add(header);
+        string[] header = { "Index", "Unlock" };
+        _datas.Add(header);
         for (int i = 0; i < slimeManager.SlimeUnlocks.Count; i++)
         {
-            string[] value = new string[] { (i + 1).ToString(), slimeManager.SlimeUnlocks[i].ToString() };
-            datas.Add(value);
+            string[] value = { (i + 1).ToString(), slimeManager.SlimeUnlocks[i].ToString() };
+            _datas.Add(value);
         }
 
-        BaseWriteData(datas, dataPath);
+        BaseWriteData(dataPath);
     }
 
     public void WritePlantLevelData(PlantManager plantManager, string dataPath)
     {
-        List<string[]> datas = new List<string[]>();
+        _datas.Clear();
 
-        string[] header = new string[] { "MaxSlimeLevel", "JamOutputLevel" };
-        datas.Add(header);
-        string[] value = new string[] { plantManager.MaxSlimeLevel.ToString(), plantManager.JamOutputLevel.ToString() };
-        datas.Add(value);
+        string[] header = { "MaxSlimeLevel", "JamOutputLevel" };
+        _datas.Add(header);
+        string[] value = { plantManager.MaxSlimeLevel.ToString(), plantManager.JamOutputLevel.ToString() };
+        _datas.Add(value);
 
-        BaseWriteData(datas, dataPath);
+        BaseWriteData(dataPath);
     }
 
     public void WriteGameData(GameManager gameManager, string dataPath)
     {
-        List<string[]> datas = new List<string[]>();
+        _datas.Clear();
 
-        string[] header = new string[] { "Jam", "Gold" };
-        datas.Add(header);
-        string[] value = new string[] { gameManager.Jam.ToString(), gameManager.Gold.ToString() };
-        datas.Add(value);
+        string[] header = { "Jam", "Gold" };
+        _datas.Add(header);
+        string[] value = { gameManager.Jam.ToString(), gameManager.Gold.ToString() };
+        _datas.Add(value);
 
-        BaseWriteData(datas, dataPath);
+        BaseWriteData(dataPath);
     }
 
     public void WriteSoundData(SoundManager soundManager, string dataPath)
     {
-        List<string[]> datas = new List<string[]>();
+        _datas.Clear();
 
-        string[] header = new string[] { "BGMVolume", "SFXVolume" };
-        datas.Add(header);
-        string[] value = new string[] { soundManager.BgmSound.ToString(), soundManager.SFXSound.ToString() };
-        datas.Add(value);
+        string[] header = { "BGMVolume", "SFXVolume" };
+        _datas.Add(header);
+        string[] value = { soundManager.BgmSound.ToString(), soundManager.SFXSound.ToString() };
+        _datas.Add(value);
 
-        BaseWriteData(datas, dataPath);
+        BaseWriteData(dataPath);
     }
 }
