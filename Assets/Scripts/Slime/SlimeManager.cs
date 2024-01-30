@@ -82,7 +82,6 @@ public class SlimeManager : MonoBehaviour
         _slimes.Remove(slime);
         _audioClipManager.PlaySFXSound(ESFXSoundType.Sell);
         _csvManager.WriteData();
-        System.GC.Collect();
     }
 }
 
