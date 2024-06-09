@@ -172,7 +172,6 @@ public class ReadData
             _slimeData.Name = $"{values[1]} ΩΩ∂Û¿”";
             _slimeData.Jam = int.Parse(values[2]);
             _slimeData.Gold = int.Parse(values[3]);
-
             slimeManager.SlimeDatas.Add(_slimeData);
         }
     }

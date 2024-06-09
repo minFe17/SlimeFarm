@@ -4,6 +4,7 @@ using Utils;
 public class Lobby : MonoBehaviour
 {
     [SerializeField] Camera _camera;
+
     void Start()
     {
         Init();

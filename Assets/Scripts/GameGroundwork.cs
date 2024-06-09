@@ -12,7 +12,6 @@ public class GameGroundwork : MonoBehaviour
     {
         Groundwork();
         GenericSingleton<ObjectPool>.Instance.Init();
-        GenericSingleton<CSVManager>.Instance.Init();
         GenericSingleton<GameManager>.Instance.Init();
         GenericSingleton<SlimeManager>.Instance.Init();
         GenericSingleton<PlantManager>.Instance.Init();

@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public struct SlimeData
 {
     public int Index { get; set; }
