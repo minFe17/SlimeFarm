@@ -4,7 +4,7 @@ public class IdleState : SlimeState
 {
     float _idleStateTime;
 
-    public override void OnEnter(Slime slime)
+    public override void OnEnter(ISlimeState slime)
     {
         base.OnEnter(slime);
         _state = EStateType.Idle;

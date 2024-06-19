@@ -6,7 +6,7 @@ public class WalkState : SlimeState
     float _speedY;
     float _walkStateTime = 2.5f;
 
-    public override void OnEnter(Slime slime)
+    public override void OnEnter(ISlimeState slime)
     {
         base.OnEnter(slime);
         _state = EStateType.Walk;
@@ -36,9 +36,9 @@ public class WalkState : SlimeState
         _speedX = Random.Range(-0.8f, 0.8f);
         _speedY = Random.Range(-0.8f, 0.8f);
         if (_speedX < 0)
-            _slime.SlimeSpriteRenderer.flipX = true;
+            _slime.SpriteRenderer.flipX = true;
         else
-            _slime.SlimeSpriteRenderer.flipX = false;
+            _slime.SpriteRenderer.flipX = false;
     }
 
     void Move()
@@ -55,6 +55,6 @@ public class WalkState : SlimeState
     {
         float newX = _speedX * Time.deltaTime;
         float newY = _speedY * Time.deltaTime;
-        _slime.transform.Translate(newX, newY, newY);
+        _slime.Transform.Translate(newX, newY, newY);
     }
 }

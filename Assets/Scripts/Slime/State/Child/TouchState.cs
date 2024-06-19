@@ -3,16 +3,16 @@ using Utils;
 
 public class TouchState : SlimeState
 {
+    IGrowSlime _slimeGrow;
     float _touchStateTime;
 
-    public override void OnEnter(Slime slime)
+    public override void OnEnter(ISlimeState slime)
     {
         base.OnEnter(slime);
         _state = EStateType.Touch;
         _slime.Animator.SetTrigger("doTouch");
-        _slime.MakeJam();
-        PlayTouchSound();
-        _slime.AddExp();
+        _slimeGrow = (Slime)_slime;
+        Touch();
         _touchStateTime = Random.Range(2f, 4f);
     }
 
@@ -26,6 +26,13 @@ public class TouchState : SlimeState
         _time += Time.deltaTime;
         if (_time >= _touchStateTime)
             _slime.ChangeState(new WalkState());
+    }
+
+    void Touch()
+    {
+        _slimeGrow.MakeJam();
+        PlayTouchSound();
+        _slimeGrow.AddExp();
     }
 
     void PlayTouchSound()

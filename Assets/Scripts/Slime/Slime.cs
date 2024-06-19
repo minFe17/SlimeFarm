@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.U2D;
 using Utils;
 
-public class Slime : MonoBehaviour
+public class Slime : MonoBehaviour, ISlimeState, IGrowSlime
 {
     [Header("Sprite")]
     [SerializeField] protected SpriteRenderer _slimeSprite;
@@ -28,12 +28,14 @@ public class Slime : MonoBehaviour
     bool _isSaveSlime;
 
     public ESlimeType SlimeType { get => _slimeType; }
-    public Animator Animator { get => _animator; }
-    public SpriteRenderer SlimeSpriteRenderer { get => _slimeSprite; }
     public int Level { get => _level; set => _level = value; }
     public float EXP { get => _exp; set => _exp = value; }
     public float PickTime { set => _pickTime = value; }
     public bool IsSaveSlime { set => _isSaveSlime = value; }
+
+    public Transform Transform => transform;
+    public Animator Animator => _animator;
+    public SpriteRenderer SpriteRenderer => _slimeSprite;
 
     protected virtual void Awake()
     {
@@ -58,7 +60,7 @@ public class Slime : MonoBehaviour
 
     void Update()
     {
-        StateMainLoop();
+        LoopState();
         EXPTimer();
     }
 
@@ -93,12 +95,6 @@ public class Slime : MonoBehaviour
     {
         if (!_uiManager.UI.IsOpenUI)
             PickTimer();
-    }
-
-    void StateMainLoop()
-    {
-        if (_state != null)
-            _state.MainLoop();
     }
 
     void CheckLevel()
@@ -159,6 +155,12 @@ public class Slime : MonoBehaviour
         _state = state;
         if (_state != null)
             _state.OnEnter(this);
+    }
+
+    public void LoopState()
+    {
+        if (_state != null)
+            _state.MainLoop();
     }
 
     public bool CheckBoard()

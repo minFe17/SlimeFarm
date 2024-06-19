@@ -8,7 +8,7 @@ public class TurnState : SlimeState
     float _turnSpeed = 0.3f;
     float _turnStateTime = 3f;
 
-    public override void OnEnter(Slime slime)
+    public override void OnEnter(ISlimeState slime)
     {
         base.OnEnter(slime);
         _state = EStateType.Turn;
@@ -37,15 +37,15 @@ public class TurnState : SlimeState
 
     void Turn()
     {
-        Vector3 targetPos = (_reposition - _slime.transform.position).normalized;
-        _slime.transform.Translate(targetPos * _turnSpeed * Time.deltaTime);
-        if (_slime.transform.position == _reposition)
+        Vector3 targetPos = (_reposition - _slime.Transform.position).normalized;
+        _slime.Transform.Translate(targetPos * _turnSpeed * Time.deltaTime);
+        if (_slime.Transform.position == _reposition)
             _slime.ChangeState(new IdleState());
 
         if (targetPos.x < 0)
-            _slime.SlimeSpriteRenderer.flipX = true;
+            _slime.SpriteRenderer.flipX = true;
         else
-            _slime.SlimeSpriteRenderer.flipX = false;
+            _slime.SpriteRenderer.flipX = false;
 
         CheckTime();
     }
