@@ -1,4 +1,4 @@
-public class SlimeState     // State ºÎ¸ğ Å¬·¡½º
+public class SlimeState     // State ë¶€ëª¨ í´ë˜ìŠ¤
 {
     protected ISlimeState _slime;
     protected EStateType _state;
