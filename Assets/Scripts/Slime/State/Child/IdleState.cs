@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class IdleState : SlimeState
+public class IdleState : SlimeState     // Idle 상태
 {
     float _idleStateTime;
 
-    public override void OnEnter(ISlimeState slime)
+    public override void OnEnter(ISlimeState slime)     // Idle 상태 진입
     {
         base.OnEnter(slime);
         _state = EStateType.Idle;
@@ -20,6 +20,6 @@ public class IdleState : SlimeState
     {
         _time += Time.deltaTime;
         if (_time >= _idleStateTime)
-            _slime.ChangeState(new WalkState());
+            _slime.ChangeState(new WalkState());    // Walk 상태로 변경
     }
 }

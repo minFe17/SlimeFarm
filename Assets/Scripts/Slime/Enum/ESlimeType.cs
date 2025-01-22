@@ -1,0 +1,22 @@
+public enum ESlimeType
+{
+    Normal,
+    Rock,
+    Bear,
+    Mummy,
+    Jelly,
+    Worm,
+    Art,
+    Cook,
+    Pudding,
+    Angel,
+    Devil,
+    King,
+    Unicorn,
+    Robot,
+    Shark,
+    Sushi,
+    Diamond,
+    Earth,
+    Max,
+}

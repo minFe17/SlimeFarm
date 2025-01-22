@@ -38,13 +38,3 @@ public class NoticeManager : MonoBehaviour
         _noticeUI.HideMessage();
     }
 }
-
-public enum ENoticeType
-{
-    None,
-    Sell,
-    NotJam,
-    NotGold,
-    NotMaxSlime,
-    Max,
-}

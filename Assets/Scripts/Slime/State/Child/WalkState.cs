@@ -6,7 +6,7 @@ public class WalkState : SlimeState
     float _speedY;
     float _walkStateTime = 2.5f;
 
-    public override void OnEnter(ISlimeState slime)
+    public override void OnEnter(ISlimeState slime)     // Walk 상태 진입
     {
         base.OnEnter(slime);
         _state = EStateType.Walk;
@@ -19,7 +19,7 @@ public class WalkState : SlimeState
         Move();
     }
 
-    public override void OnExit()
+    public override void OnExit()   // Walk 상태 끝
     {
         _slime.Animator.SetBool("isWalk", false);
     }
@@ -28,7 +28,7 @@ public class WalkState : SlimeState
     {
         _time += Time.deltaTime;
         if (_time >= _walkStateTime)
-            _slime.ChangeState(new IdleState());
+            _slime.ChangeState(new IdleState());    // Idle 상태로 변경
     }
 
     void SetWalkSpeed()
@@ -44,7 +44,7 @@ public class WalkState : SlimeState
     void Move()
     {
         if (_slime.CheckBoard())
-            _slime.ChangeState(new TurnState());
+            _slime.ChangeState(new TurnState());    // Turn 상태로 변경
         else
             Walk();
 

@@ -21,7 +21,7 @@ public class BuySlimeUI : MonoBehaviour
     GameManager _gameManager;
     AudioClipManager _audioClipManager;
     NoticeManager _noticeManager;
-    
+
     int _page;
 
     void Start()
@@ -115,10 +115,4 @@ public class BuySlimeUI : MonoBehaviour
             _noticeManager.SendMessage(ENoticeType.NotMaxSlime);
         }
     }
-}
-
-public enum ELockType
-{
-    Unlock,
-    Lock,
 }

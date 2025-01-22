@@ -1,4 +1,4 @@
-public class SlimeState
+public class SlimeState     // State 부모 클래스
 {
     protected ISlimeState _slime;
     protected EStateType _state;

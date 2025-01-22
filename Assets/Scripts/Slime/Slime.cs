@@ -196,13 +196,3 @@ public class Slime : MonoBehaviour, ISlimeState, IGrowSlime
         GenericSingleton<GameManager>.Instance.AddJam(makeJam);
     }
 }
-
-public enum EStateType
-{
-    Idle,
-    Walk,
-    Turn,
-    Touch,
-    Pick,
-    Max,
-}
