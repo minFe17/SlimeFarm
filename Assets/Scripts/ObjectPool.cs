@@ -25,8 +25,8 @@ public class ObjectPool : MonoBehaviour
         GameObject slime = null;
 
         _slimeobjectPool.TryGetValue(slimeType, out slimeQueues);
-        if(slimeQueues.Count > 0)
-            slime = slimeQueues.Dequeue();
+        if(slimeQueues.Count > 0)   // Queue에 슬라임이 있는지 체크
+            slime = slimeQueues.Dequeue();  // 슬라임 꺼내기
         else
            slime = CreateSlime(slimePrefab);
         return slime;
@@ -37,7 +37,7 @@ public class ObjectPool : MonoBehaviour
         Queue<GameObject> slimeQueues;
         _slimeobjectPool.TryGetValue(slime.SlimeType, out slimeQueues);
         slime.gameObject.SetActive(false);
-        slimeQueues.Enqueue(slime.gameObject);
+        slimeQueues.Enqueue(slime.gameObject);  // 슬라임 넣기
         slime.gameObject.transform.parent = this.transform;
     }
 }
