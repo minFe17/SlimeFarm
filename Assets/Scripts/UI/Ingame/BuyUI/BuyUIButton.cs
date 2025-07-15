@@ -71,9 +71,9 @@ public class BuyUIButton : MonoBehaviour
     void SetSpriteState()
     {
         SpriteState spriteState = new SpriteState();
-        spriteState.highlightedSprite = _onSprite;
-        spriteState.pressedSprite = _onSprite;
-        spriteState.selectedSprite = _onSprite;
+        spriteState.highlightedSprite = _onSprite;  // 마우스를 버튼에 올렸을 때
+        spriteState.pressedSprite = _onSprite;      // 버튼을 누른 생태
+        spriteState.selectedSprite = _onSprite;     // 버튼을 선택했을 때
 
         _button.spriteState = spriteState;
     }
